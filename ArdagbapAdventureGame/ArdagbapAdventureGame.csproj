@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adventure.cs" />
+    <Compile Include="Card.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="CreatureCombat.cs" />
     <Compile Include="DialogEncounter.cs" />
