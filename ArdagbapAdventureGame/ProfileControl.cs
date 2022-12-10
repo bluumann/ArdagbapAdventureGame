@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace ArdagbapAdventureGame
 {
-    public partial class Form1 : Form
+    public partial class ProfileControl : UserControl
     {
-        public Form1()
+        public ProfileControl()
         {
             InitializeComponent();
+        }
+
+        private void ProfileControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
