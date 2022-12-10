@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace ArdagbapAdventureGame
 {
-    internal class Game
+    public class Game
     {
         private List<Profile> Profiles = new List<Profile>();
         public Profile CurrentProfile;
 
-        public Profile NewProfile()
-        {
-            //Profile createdProfile = "Placeholder";
-            //return createdProfile;
-        }
+        //public Profile NewProfile()
+        //{
+        //    //Profile createdProfile = "Placeholder";
+        //    //return createdProfile;
+        //}
 
         public void ShowProfiles()
         {
