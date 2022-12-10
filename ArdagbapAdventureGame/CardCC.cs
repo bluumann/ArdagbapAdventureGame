@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace ArdagbapAdventureGame
 {
-    public partial class GameForm : Form
+    public partial class CardCC : UserControl
     {
-        public GameForm()
+        public CardCC()
         {
             InitializeComponent();
-        }
-
-        private void cardCC1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
