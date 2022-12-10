@@ -12,6 +12,8 @@ namespace ArdagbapAdventureGame
 {
     public partial class GameForm : Form
     {
+        Event currentEvent;
+
         public GameForm()
         {
             InitializeComponent();
