@@ -18,6 +18,8 @@ namespace ArdagbapAdventureGame
         int currentCreatureBaseDamage = 0;
         int playerBaseDamage = 10;
         int playerMaxHP = 100;
+        
+        Random rnd = new Random();
 
         Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("D_Leonan.png") };
         Card strongCard = new Card() { CardName = "Strong Card", CardType = "Strong", CardDescription = "This is a strong card.", CardImage = Image.FromFile("D_Metal.png") };
@@ -55,41 +57,17 @@ namespace ArdagbapAdventureGame
 
         private void debugSpell_Click(object sender, EventArgs e)
         {
-            if (Adventure.Events[Adventure.CurrentPath].EventType == "Strength")
-            {
-                MessageBox.Show(Result(true));
-                Advance();
-            }
-            else
-            {
-                MessageBox.Show(Result(false));
-            }
+            UseCard("Spell");
         }
 
         private void debugSkill_Click(object sender, EventArgs e)
         {
-            if (Adventure.Events[Adventure.CurrentPath].EventType == "Spell")
-            {
-                MessageBox.Show(Result(true));
-                Advance();
-            }
-            else
-            {
-                MessageBox.Show(Result(false));
-            }
+            UseCard("Skill");
         }
 
         private void debugStrength_Click(object sender, EventArgs e)
         {
-            if (Adventure.Events[Adventure.CurrentPath].EventType == "Skill")
-            {
-                MessageBox.Show(Result(true));
-                Advance();
-            }
-            else
-            {
-                MessageBox.Show(Result(false));
-            }
+            UseCard("Strength");
         }
 
         //debug commands end
@@ -113,7 +91,7 @@ namespace ArdagbapAdventureGame
                 lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
                 textEvent.Text = "Placeholder Ending Scene Text";
                 picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
-                lblEventType.Text = "";
+                lblEventType.Text = "End Game";
 
                 CreatureCombat current = (CreatureCombat)Adventure.Events[Adventure.CurrentPath];
 
@@ -164,25 +142,19 @@ namespace ArdagbapAdventureGame
             if (barCreatureHP.Value == 0) MessageBox.Show("Nothing to Attack!");
             else
             {
-                Random rnd = new Random();
-
                 int playerDmg = playerBaseDamage + rnd.Next(1,5);
                 int creatureDmg = currentCreatureBaseDamage + rnd.Next(1,5);
 
                 MessageBox.Show("You attacked " + lblCreatureName.Text + " for " + playerDmg + " and were attacked for " + creatureDmg + ".");
 
-                if (barCreatureHP.Value - playerDmg <= 0) barCreatureHP.Value = 0;
-                else barCreatureHP.Value += -playerDmg;
+                CalculateDamage(playerDmg, creatureDmg);
 
-                if (barPlayerHP.Value - creatureDmg <= 0) barPlayerHP.Value = 0;
-                else barPlayerHP.Value += -creatureDmg;
-                UpdateCombat();
             }
           
         }
         private void btnRest_Click(object sender, EventArgs e)
         {
-            if (hasAction)
+            if (hasAction && lblEventType.Text != "Combat")
             {
                 if (barPlayerHP.Value + 15 >= 100) barPlayerHP.Value = 100;
                 else barPlayerHP.Value += 15;
@@ -207,7 +179,8 @@ namespace ArdagbapAdventureGame
 
         private void UpdateCombat()
         {
-            lblBarCreature.Text = barCreatureHP.Value.ToString() + "/" + currentCreatureMaxHP;
+            if (barCreatureHP.Value != 0) lblBarCreature.Text = barCreatureHP.Value.ToString() + "/" + currentCreatureMaxHP;
+            else lblBarCreature.Text = "";
             lblBarPlayer.Text = barPlayerHP.Value.ToString() + "/" + playerMaxHP;
 
             if (barPlayerHP.Value == 0)
@@ -233,6 +206,7 @@ namespace ArdagbapAdventureGame
             lblBarCreature.Text = "";
             lblCreatureDmg.Text = "";
             lblCreatureType.Text = "";
+            lblBarCreature.Text = "";
             picCreature.Image = null;
         }
 
@@ -269,6 +243,136 @@ namespace ArdagbapAdventureGame
             return message;
         }
 
+        private void UseCard(string type)
+        {
+            if (lblEventType.Text == "Spell")
+            {
+                //MessageBox.Show("We're in the spell game now.");
+                if (type == "Spell")
+                {
+                    MessageBox.Show(Result(false));
+                }
+                else if (type == "Skill")
+                {
+                    MessageBox.Show(Result(true));
+                    Advance();
+                }
+                else if (type == "Strength")
+                {
+                    MessageBox.Show(Result(false));
+                }
+            }
+            else if (lblEventType.Text == "Skill")
+            {
+                //MessageBox.Show("We're in the skill game now.");
+                if (type == "Spell")
+                {
+                    MessageBox.Show(Result(false));
+                }
+                else if (type == "Skill")
+                {
+                    MessageBox.Show(Result(false));
+                }
+                else if (type == "Strength")
+                {
+                    MessageBox.Show(Result(true));
+                    Advance();
+                }
+            }
+            else if (lblEventType.Text == "Strength")
+            {
+                //MessageBox.Show("We're in the strength game now.");
+                if (type == "Spell")
+                {
+                    MessageBox.Show(Result(true));
+                    Advance();
+                }
+                else if (type == "Skill")
+                {
+                    MessageBox.Show(Result(false));
+                }
+                else if (type == "Strength")
+                {
+                    MessageBox.Show(Result(false));
+                }
+            }
+            else if (lblEventType.Text == "Combat" || lblEventType.Text == "End Game")
+            {
+                //MessageBox.Show("We're in the end game now.");
+                if (type == "Spell")//spellcasting!
+                {
+                    if (lblCreatureType.Text == "Wizard")
+                    {
+                        MessageBox.Show("You cast a spell at " + lblCreatureName.Text + ". Your foe puts effort and blocks your spell!");
+                    }
+                    else if (lblCreatureType.Text == "Rogue")
+                    {
+                        MessageBox.Show("You cast a spell at " + lblCreatureName.Text + ". The rogue seems laughs at you and sneak attacks for some damage.");
+                        CalculateDamage(0, rnd.Next(1, 6));
+                    }
+                    else if (lblCreatureType.Text == "Warrior")
+                    {
+                        MessageBox.Show("You cast a spell at " + lblCreatureName.Text + ". The spell breaks the warrior's defense and deals heavy damage.");
+                        CalculateDamage(playerBaseDamage + rnd.Next(1,11), 0);
+                    }
+                    else if (lblCreatureType.Text == "The End of All Things")
+                    {
+                        MessageBox.Show(lblCreatureName.Text + " is immune to your petty magic.");
+                    }
+                }
+                else if (type == "Skill")//roguecasting!
+                {
+                    if (lblCreatureType.Text == "Wizard")
+                    {
+                        MessageBox.Show("You trick " + lblCreatureName.Text + ". Your foe is taken by surprise and takes heavy damage!");
+                        CalculateDamage(playerBaseDamage + rnd.Next(1, 11), 0);
+                    }
+                    else if (lblCreatureType.Text == "Rogue")
+                    {
+                        MessageBox.Show("It seems you and " + lblCreatureName.Text + " are evenly matched!");
+                    }
+                    else if (lblCreatureType.Text == "Warrior")
+                    {
+                        MessageBox.Show("You try to outclass " + lblCreatureName.Text + ". However, he is too much for you and fights back!");
+                        CalculateDamage(0, rnd.Next(1, 6));
+                    }
+                    else if (lblCreatureType.Text == "The End of All Things")
+                    {
+                        MessageBox.Show(lblCreatureName.Text + " is immune to your coniving schemes.");
+                    }
+                }
+                else if (type == "Strength")//wariorcasting!
+                {
+                    if (lblCreatureType.Text == "Wizard")
+                    {
+                        MessageBox.Show("How can steel best magic? " + lblCreatureName.Text + " turns your attack back at you!");
+                        CalculateDamage(0, rnd.Next(1, 6));
+                    }
+                    else if (lblCreatureType.Text == "Rogue")
+                    {
+                        MessageBox.Show("Theatricality and deception. " + lblCreatureName.Text + " schemes are not match for you as you strike them down!");
+                        CalculateDamage(playerBaseDamage + rnd.Next(1, 11), 0);
+                    }
+                    else if (lblCreatureType.Text == "Warrior")
+                    {
+                        MessageBox.Show("You and " + lblCreatureName.Text + " lock eyes. You both know your might will not make right.");
+                    }
+                    else if (lblCreatureType.Text == "The End of All Things")
+                    {
+                        MessageBox.Show(lblCreatureName.Text + " ignores your might.");
+                    }
+                }
+            }
+        }
+        private void CalculateDamage(int playerDmg, int creatureDmg)
+        {
+            if (barCreatureHP.Value - playerDmg <= 0) barCreatureHP.Value = 0;
+            else barCreatureHP.Value += -playerDmg;
+
+            if (barPlayerHP.Value - creatureDmg <= 0) barPlayerHP.Value = 0;
+            else barPlayerHP.Value += -creatureDmg;
+            UpdateCombat();
+        }
         // Populate the card panel section with cards
         private void btnPopulateCard_Click(object sender, EventArgs e)
         {
@@ -332,5 +436,11 @@ namespace ArdagbapAdventureGame
                 MessageBox.Show(Result(false));
             }
         }
+
+        private void debugUse_Click(object sender, EventArgs e)
+        {
+            
+        }
+
     }
 }
