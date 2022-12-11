@@ -49,3 +49,18 @@ namespace ArdagbapAdventureGame
 
     }
 }
+
+
+/*
+ Puzzle = MessageBox.Show("The puzzle stands in from of you, what will succeed on it?", "Puzzle", MessageBoxButtons.YesNo);
+            if (Puzzle == DialogResult.Yes)
+            {
+                lbn_Turn.Text = "You succeeded on the puzzle and got a point!";
+                score++;
+                lbn_PointScore.Text = score.ToString(); 
+            }
+            if (Puzzle == DialogResult.No)
+            {
+                lbn_Turn.Text = "You failed on the puzzle and showed you can be humble!";
+            }
+*/

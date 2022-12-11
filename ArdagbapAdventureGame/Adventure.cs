@@ -12,6 +12,10 @@ namespace ArdagbapAdventureGame
         public int CurrentPath = 0;
         public List<Event> Events = new List<Event>();
 
+        public Image combat1 = Image.FromFile("D_Metal.png");
+        public Image combat2 = Image.FromFile("D_Wizard.png");
+
+
         public void DisplayEvents()
         {
             if (CurrentPath == Events.Count - 1) ;
@@ -34,18 +38,20 @@ namespace ArdagbapAdventureGame
             Image event9 = Image.FromFile("Sea.jpg");
             Image event10 = Image.FromFile("Cosmic.jpg");
 
+            
+
             //Skill, Spell, Strength
 
-            Events.Add(new CreatureCombat("Treta Prison", event1, "Hi", "Skill"));
-            Events.Add(new CreatureCombat("Mountains of Colors", event2, "Hi", "Spell"));
-            Events.Add(new CreatureCombat("Fields of Colors", event3, "Hi", "Skill"));
-            Events.Add(new CreatureCombat("Laketown", event4, "Hi", "Strength"));
-            Events.Add(new CreatureCombat("Dirty Old Road", event5, "Hi", "Strength"));
-            Events.Add(new CreatureCombat("An Old Friend", event6, "Hi", "Skill"));
-            Events.Add(new CreatureCombat("Where the Ocean meets the People", event7, "Hi", "Skill"));
-            Events.Add(new CreatureCombat("Where the Ocean meets your Feet", event8, "Hi", "Strength"));
-            Events.Add(new CreatureCombat("Look to the Skies", event9, "Hi", "Skill"));
-            Events.Add(new CreatureCombat("One Cosmic Ending", event10, "Hi", "Spell"));
+            Events.Add(new DialogEncounter("Treta Prison", event1, "Hi", "Skill"));
+            Events.Add(new DialogEncounter("Mountains of Colors", event2, "Hi", "Spell"));
+            Events.Add(new CreatureCombat("Fields of Colors", event3, "Hi", "Combat", combat1));
+            Events.Add(new DialogEncounter("Laketown", event4, "Hi", "Strength"));
+            Events.Add(new DialogEncounter("Dirty Old Road", event5, "Hi", "Strength"));
+            Events.Add(new DialogEncounter("An Old Friend", event6, "Hi", "Skill"));
+            Events.Add(new CreatureCombat("Where the Ocean meets the People", event7, "Hi", "Combat", combat2));
+            Events.Add(new DialogEncounter("Where the Ocean meets your Feet", event8, "Hi", "Strength"));
+            Events.Add(new DialogEncounter("Look to the Skies", event9, "Hi", "Skill"));
+            Events.Add(new DialogEncounter("One Cosmic Ending", event10, "Hi", "Spell"));
             
         }
 

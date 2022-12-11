@@ -12,7 +12,6 @@ namespace ArdagbapAdventureGame
 {
     public partial class GameForm : Form
     {
-        Event currentEvent;
         Adventure Adventure = new Adventure();
 
         public GameForm()
@@ -39,7 +38,32 @@ namespace ArdagbapAdventureGame
 
         private void Advance()
         {
+            if (Adventure.CurrentPath == Adventure.Events.Count - 1)
+            {
+                MessageBox.Show("Congratulations, you won!!!");
+                MainMenu mainMenu = new MainMenu();
+                this.Hide();
+                mainMenu.ShowDialog();
+                this.Close();
+            }
+
+
             Adventure.DisplayEvents();
+
+            if (Adventure.CurrentPath == 2)
+            {
+                lblCreatureName.Text = "Dom Metal";
+                barCreatureHP.Value = 100;
+                picCreature.Image = Adventure.combat1;
+            }
+
+            if (Adventure.CurrentPath == 6)
+            {
+                lblCreatureName.Text = "Dom Wizard";
+                barCreatureHP.Value = 100;
+                picCreature.Image = Adventure.combat2;
+            }
+
             lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
             textEvent.Text = Adventure.Events[Adventure.CurrentPath].EventDescription;
             picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
@@ -55,12 +79,12 @@ namespace ArdagbapAdventureGame
         {
             if (Adventure.Events[Adventure.CurrentPath].EventType == "Strength")
             {
-                MessageBox.Show("Success!");
+                MessageBox.Show(Result(true));
                 Advance();
             }
             else
             {
-                MessageBox.Show("Seu merda, vc errou!");
+                MessageBox.Show(Result(false));
             }
         }
 
@@ -68,12 +92,12 @@ namespace ArdagbapAdventureGame
         {
             if (Adventure.Events[Adventure.CurrentPath].EventType == "Spell")
             {
-                MessageBox.Show("Success!");
+                MessageBox.Show(Result(true));
                 Advance();
             }
             else
             {
-                MessageBox.Show("Seu mojo não está funcionando!");
+                MessageBox.Show(Result(false));
             }
         }
 
@@ -81,25 +105,92 @@ namespace ArdagbapAdventureGame
         {
             if (Adventure.Events[Adventure.CurrentPath].EventType == "Skill")
             {
-                MessageBox.Show("Success!");
+                MessageBox.Show(Result(true));
                 Advance();
             }
             else
             {
-                MessageBox.Show("Não consegue, né Moisés?");
+                MessageBox.Show(Result(false));
             }
         }
+        private void btnAttack_Click(object sender, EventArgs e)
+        {
+            if (barCreatureHP.Value == 0) MessageBox.Show("Nothing to Attack!");
+            else
+            {
+                Random rnd = new Random();
 
+                int playerDmg = rnd.Next(1,15);
+                int creatureDmg = rnd.Next(1,15);
+
+                MessageBox.Show("You attacked " + lblCreatureName.Text + " for " + playerDmg + " and was attacked for " + creatureDmg + ".");
+
+                if (barCreatureHP.Value - playerDmg <= 0) barCreatureHP.Value = 0;
+                else barCreatureHP.Value += -playerDmg;
+
+                if (barPlayerHP.Value - creatureDmg <= 0) barPlayerHP.Value = 0;
+                else barPlayerHP.Value += -creatureDmg;
+                UpdateCombat();
+            }
+          
+        }
         private void btnRest_Click(object sender, EventArgs e)
         {
             if (barPlayerHP.Value + 10 >= 100) barPlayerHP.Value = 100;
             else barPlayerHP.Value += 10;
         }
 
-        private void btnAttack_Click(object sender, EventArgs e)
+        private void UpdateCombat()
         {
-            if (barCreatureHP.Value - 10 <= 0) barCreatureHP.Value = 0;
-            else barCreatureHP.Value += -10;
+            if (barPlayerHP.Value == 0)
+            {
+                MessageBox.Show("You hitpoints were reduced to zero, you lose.");
+
+                MainMenu mainMenu = new MainMenu();
+                this.Hide();
+                mainMenu.ShowDialog();
+                this.Close();
+            }
+            if (barCreatureHP.Value == 0 && lblCreatureName.Text != "No Combat")
+            {
+                MessageBox.Show("You defeated " + lblCreatureName.Text + "!");
+                lblCreatureName.Text = "No Combat";
+                picCreature.Image = null;
+                Advance();
+            }
+        }
+
+        private string Result(bool result)
+        {
+            string message = "";
+            if (result)
+            {
+                Random rnd = new Random();
+                List<string> list = new List<string>();
+
+                list.Add("You succcesfully conducted your task!");
+                list.Add("Congratulations, you succeeded.");
+                list.Add("Great job, well done!");
+                list.Add("You did great!");
+                list.Add("Success!!!");
+
+                message = list[rnd.Next(list.Count)];
+            }
+            else
+            {
+                Random rnd = new Random();
+                List<string> list = new List<string>();
+
+                list.Add("You succcesfully failed in your task!");
+                list.Add("Oh no, you failed.");
+                list.Add("Bad job, done rare! You fail");
+                list.Add("You did poorly!");
+                list.Add("Failure!!!");
+
+                message = list[rnd.Next(list.Count)];
+            }
+            
+            return message;
         }
     }
 }

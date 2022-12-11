@@ -32,6 +32,9 @@
             this.picPlayer = new System.Windows.Forms.PictureBox();
             this.picCreature = new System.Windows.Forms.PictureBox();
             this.panelEvent = new System.Windows.Forms.Panel();
+            this.textEvent = new System.Windows.Forms.RichTextBox();
+            this.lblEventType = new System.Windows.Forms.Label();
+            this.picEvent = new System.Windows.Forms.PictureBox();
             this.lblEventName = new System.Windows.Forms.Label();
             this.lblPlayerName = new System.Windows.Forms.Label();
             this.lblCreatureName = new System.Windows.Forms.Label();
@@ -43,9 +46,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.debugStart = new System.Windows.Forms.Button();
             this.debugContinue = new System.Windows.Forms.Button();
-            this.picEvent = new System.Windows.Forms.PictureBox();
-            this.lblEventType = new System.Windows.Forms.Label();
-            this.textEvent = new System.Windows.Forms.RichTextBox();
             this.debugSpell = new System.Windows.Forms.Button();
             this.debugSkill = new System.Windows.Forms.Button();
             this.debugStrength = new System.Windows.Forms.Button();
@@ -75,6 +75,7 @@
             this.picCreature.Location = new System.Drawing.Point(952, 40);
             this.picCreature.Name = "picCreature";
             this.picCreature.Size = new System.Drawing.Size(120, 120);
+            this.picCreature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picCreature.TabIndex = 2;
             this.picCreature.TabStop = false;
             // 
@@ -88,6 +89,33 @@
             this.panelEvent.Name = "panelEvent";
             this.panelEvent.Size = new System.Drawing.Size(808, 345);
             this.panelEvent.TabIndex = 1;
+            // 
+            // textEvent
+            // 
+            this.textEvent.Location = new System.Drawing.Point(22, 220);
+            this.textEvent.Name = "textEvent";
+            this.textEvent.ReadOnly = true;
+            this.textEvent.Size = new System.Drawing.Size(768, 111);
+            this.textEvent.TabIndex = 16;
+            this.textEvent.Text = "";
+            // 
+            // lblEventType
+            // 
+            this.lblEventType.AutoSize = true;
+            this.lblEventType.Location = new System.Drawing.Point(697, 44);
+            this.lblEventType.Name = "lblEventType";
+            this.lblEventType.Size = new System.Drawing.Size(62, 13);
+            this.lblEventType.TabIndex = 15;
+            this.lblEventType.Text = "Event Type";
+            // 
+            // picEvent
+            // 
+            this.picEvent.Location = new System.Drawing.Point(22, 28);
+            this.picEvent.Name = "picEvent";
+            this.picEvent.Size = new System.Drawing.Size(631, 186);
+            this.picEvent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picEvent.TabIndex = 14;
+            this.picEvent.TabStop = false;
             // 
             // lblEventName
             // 
@@ -112,9 +140,9 @@
             this.lblCreatureName.AutoSize = true;
             this.lblCreatureName.Location = new System.Drawing.Point(959, 24);
             this.lblCreatureName.Name = "lblCreatureName";
-            this.lblCreatureName.Size = new System.Drawing.Size(78, 13);
+            this.lblCreatureName.Size = new System.Drawing.Size(60, 13);
             this.lblCreatureName.TabIndex = 4;
-            this.lblCreatureName.Text = "Creature Name";
+            this.lblCreatureName.Text = "No Combat";
             // 
             // barCreatureHP
             // 
@@ -122,7 +150,6 @@
             this.barCreatureHP.Name = "barCreatureHP";
             this.barCreatureHP.Size = new System.Drawing.Size(100, 23);
             this.barCreatureHP.TabIndex = 5;
-            this.barCreatureHP.Value = 50;
             // 
             // barPlayerHP
             // 
@@ -190,33 +217,6 @@
             this.debugContinue.Text = "Debug Continue";
             this.debugContinue.UseVisualStyleBackColor = true;
             this.debugContinue.Click += new System.EventHandler(this.debugContinue_Click);
-            // 
-            // picEvent
-            // 
-            this.picEvent.Location = new System.Drawing.Point(22, 28);
-            this.picEvent.Name = "picEvent";
-            this.picEvent.Size = new System.Drawing.Size(631, 186);
-            this.picEvent.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picEvent.TabIndex = 14;
-            this.picEvent.TabStop = false;
-            // 
-            // lblEventType
-            // 
-            this.lblEventType.AutoSize = true;
-            this.lblEventType.Location = new System.Drawing.Point(697, 44);
-            this.lblEventType.Name = "lblEventType";
-            this.lblEventType.Size = new System.Drawing.Size(62, 13);
-            this.lblEventType.TabIndex = 15;
-            this.lblEventType.Text = "Event Type";
-            // 
-            // textEvent
-            // 
-            this.textEvent.Location = new System.Drawing.Point(22, 220);
-            this.textEvent.Name = "textEvent";
-            this.textEvent.ReadOnly = true;
-            this.textEvent.Size = new System.Drawing.Size(768, 111);
-            this.textEvent.TabIndex = 16;
-            this.textEvent.Text = "";
             // 
             // debugSpell
             // 
