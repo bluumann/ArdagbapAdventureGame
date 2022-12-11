@@ -10,10 +10,11 @@ namespace ArdagbapAdventureGame
     internal class Adventure
     {
         public int CurrentPath = 0;
+        
         public List<Event> Events = new List<Event>();
+        public List<string> Names = new List<string>();
 
-        public Image combat1 = Image.FromFile("D_Metal.png");
-        public Image combat2 = Image.FromFile("D_Wizard.png");
+        Random rnd = new Random();
 
         Image img_Room = Image.FromFile("Room.jpg");
         Image img_Mountains = Image.FromFile("Mountains.jpg");
@@ -26,11 +27,11 @@ namespace ArdagbapAdventureGame
         Image img_Sea = Image.FromFile("Sea.jpg");
         Image img_Cosmic = Image.FromFile("Cosmic.jpg");
 
-        Image img_Metal = Image.FromFile("Bloons.jpg");
-        Image img_Wizard = Image.FromFile("CoastCity.jpg");
-
-        Random rnd = new Random();
-
+        Image img_Metal = Image.FromFile("D_Metal.png");
+        Image img_Wizard = Image.FromFile("D_Wizard.png");
+        Image img_Fairy = Image.FromFile("D_Fairy.png");
+        Image img_Faun = Image.FromFile("D_Faun.png");
+        Image img_Leonan = Image.FromFile("D_Leonan.png");
 
         public void DisplayEvents()
         {
@@ -41,16 +42,30 @@ namespace ArdagbapAdventureGame
         {
             Events.Clear();
             CurrentPath = 0;
-                                 
-            Events.Add(new DialogEncounter("A Dank and Dark Prison", img_Room, GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
 
+            Names.Add("the Coleen");
+            Names.Add("the Bedron");
+            Names.Add("the Kosa");
+            Names.Add("the Buddeh");
+            Names.Add("the Tiger Gheist");
+            Names.Add("Duck Quackor");
+            Names.Add("Dom Metal");
+            Names.Add("Leonan");
+            Names.Add("Wicked Witch");
+            Names.Add("Bad Wolf");
+            Names.Add("Inconspicious Person");
+            Names.Add("Final Project");
+
+            Events.Add(new DialogEncounter("A Dank and Dark Prison", img_Room, GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 1", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
+            Events.Add(new CreatureCombat("Combat 1", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 100, 10));
             Events.Add(new DialogEncounter("Scene 2", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 3", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
-            Events.Add(new CreatureCombat("Combat 1", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), GenerateImage(ReceiveRandom(8)), 100, 10));
+            Events.Add(new CreatureCombat("Combat 2", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 100, 10));
             Events.Add(new DialogEncounter("Scene 4", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 5", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 6", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
+            Events.Add(new CreatureCombat("Combat 3", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 100, 10));
             Events.Add(new DialogEncounter("Scene 7", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 8", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
 
@@ -141,28 +156,19 @@ namespace ArdagbapAdventureGame
             switch (number)
             {
                 case 0:
-                    key = img_Beach;
+                    key = img_Wizard;
                     break;
                 case 1:
-                    key = img_Bloons;
+                    key = img_Metal;
                     break;
                 case 2:
-                    key = img_City;
+                    key = img_Fairy;
                     break;
                 case 3:
-                    key = img_Sea;
+                    key = img_Faun;
                     break;
                 case 4:
-                    key = img_Lake;
-                    break;
-                case 5:
-                    key = img_Mountains;
-                    break;
-                case 6:
-                    key = img_Path;
-                    break;
-                case 7:
-                    key = img_Rural;
+                    key = img_Leonan;
                     break;
             }
             return key;

@@ -13,10 +13,12 @@ namespace ArdagbapAdventureGame
     public partial class GameForm : Form
     {
         Adventure Adventure = new Adventure();
+        
 
         public GameForm()
         {
             InitializeComponent();
+            lblBarCreature.Text = ""; //just to remove the numbers (placeholder for design).
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -47,27 +49,33 @@ namespace ArdagbapAdventureGame
                 this.Close();
             }
 
-
             Adventure.DisplayEvents();
 
-            if (Adventure.CurrentPath == 2)
+            if(Adventure.Events[Adventure.CurrentPath] is CreatureCombat)
             {
-                lblCreatureName.Text = "Dom Metal";
-                barCreatureHP.Value = 100;
-                picCreature.Image = Adventure.combat1;
+                lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
+                textEvent.Text = Adventure.Events[Adventure.CurrentPath].EventDescription;
+                picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
+                lblEventType.Text = Adventure.Events[Adventure.CurrentPath].EventType;
+
+                CreatureCombat current = (CreatureCombat)Adventure.Events[Adventure.CurrentPath];
+
+                lblCreatureName.Text = Adventure.Names[Adventure.ReceiveRandom(Adventure.Names.Count)];
+                barCreatureHP.Value = current.CreatureMaxHealth;
+                picCreature.Image = current.CreatureImage;
+
+                UpdateCombat();
+            }
+            if (Adventure.Events[Adventure.CurrentPath] is DialogEncounter)
+            {
+                lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
+                textEvent.Text = Adventure.Events[Adventure.CurrentPath].EventDescription;
+                picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
+                lblEventType.Text = Adventure.Events[Adventure.CurrentPath].EventType;
             }
 
-            if (Adventure.CurrentPath == 6)
-            {
-                lblCreatureName.Text = "Dom Wizard";
-                barCreatureHP.Value = 100;
-                picCreature.Image = Adventure.combat2;
-            }
 
-            lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
-            textEvent.Text = Adventure.Events[Adventure.CurrentPath].EventDescription;
-            picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
-            lblEventType.Text = Adventure.Events[Adventure.CurrentPath].EventType;
+
         }
 
         private void debugContinue_Click(object sender, EventArgs e)
@@ -138,10 +146,14 @@ namespace ArdagbapAdventureGame
         {
             if (barPlayerHP.Value + 10 >= 100) barPlayerHP.Value = 100;
             else barPlayerHP.Value += 10;
+            UpdateCombat();
         }
 
         private void UpdateCombat()
         {
+            lblBarCreature.Text = barCreatureHP.Value.ToString() + "/" + 100;
+            lblBarPlayer.Text = barPlayerHP.Value.ToString() + "/" + 100;
+
             if (barPlayerHP.Value == 0)
             {
                 MessageBox.Show("You hitpoints were reduced to zero, you lose.");
@@ -155,6 +167,7 @@ namespace ArdagbapAdventureGame
             {
                 MessageBox.Show("You defeated " + lblCreatureName.Text + "!");
                 lblCreatureName.Text = "No Combat";
+                lblBarCreature.Text = "";
                 picCreature.Image = null;
                 Advance();
             }
@@ -192,5 +205,6 @@ namespace ArdagbapAdventureGame
             
             return message;
         }
+
     }
 }

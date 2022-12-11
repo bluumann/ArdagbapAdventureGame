@@ -49,6 +49,8 @@
             this.debugSpell = new System.Windows.Forms.Button();
             this.debugSkill = new System.Windows.Forms.Button();
             this.debugStrength = new System.Windows.Forms.Button();
+            this.lblBarPlayer = new System.Windows.Forms.Label();
+            this.lblBarCreature = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCreature)).BeginInit();
             this.panelEvent.SuspendLayout();
@@ -72,9 +74,9 @@
             // 
             // picCreature
             // 
-            this.picCreature.Location = new System.Drawing.Point(952, 40);
+            this.picCreature.Location = new System.Drawing.Point(852, 42);
             this.picCreature.Name = "picCreature";
-            this.picCreature.Size = new System.Drawing.Size(120, 120);
+            this.picCreature.Size = new System.Drawing.Size(196, 184);
             this.picCreature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picCreature.TabIndex = 2;
             this.picCreature.TabStop = false;
@@ -87,7 +89,7 @@
             this.panelEvent.Controls.Add(this.lblEventName);
             this.panelEvent.Location = new System.Drawing.Point(138, 12);
             this.panelEvent.Name = "panelEvent";
-            this.panelEvent.Size = new System.Drawing.Size(808, 345);
+            this.panelEvent.Size = new System.Drawing.Size(669, 345);
             this.panelEvent.TabIndex = 1;
             // 
             // textEvent
@@ -95,14 +97,14 @@
             this.textEvent.Location = new System.Drawing.Point(22, 220);
             this.textEvent.Name = "textEvent";
             this.textEvent.ReadOnly = true;
-            this.textEvent.Size = new System.Drawing.Size(768, 111);
+            this.textEvent.Size = new System.Drawing.Size(631, 111);
             this.textEvent.TabIndex = 16;
             this.textEvent.Text = "";
             // 
             // lblEventType
             // 
             this.lblEventType.AutoSize = true;
-            this.lblEventType.Location = new System.Drawing.Point(697, 44);
+            this.lblEventType.Location = new System.Drawing.Point(574, 12);
             this.lblEventType.Name = "lblEventType";
             this.lblEventType.Size = new System.Drawing.Size(62, 13);
             this.lblEventType.TabIndex = 15;
@@ -138,26 +140,27 @@
             // lblCreatureName
             // 
             this.lblCreatureName.AutoSize = true;
-            this.lblCreatureName.Location = new System.Drawing.Point(959, 24);
+            this.lblCreatureName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCreatureName.Location = new System.Drawing.Point(848, 19);
             this.lblCreatureName.Name = "lblCreatureName";
-            this.lblCreatureName.Size = new System.Drawing.Size(60, 13);
+            this.lblCreatureName.Size = new System.Drawing.Size(98, 20);
             this.lblCreatureName.TabIndex = 4;
             this.lblCreatureName.Text = "No Combat";
             // 
             // barCreatureHP
             // 
-            this.barCreatureHP.Location = new System.Drawing.Point(962, 166);
+            this.barCreatureHP.Location = new System.Drawing.Point(823, 232);
             this.barCreatureHP.Name = "barCreatureHP";
-            this.barCreatureHP.Size = new System.Drawing.Size(100, 23);
+            this.barCreatureHP.Size = new System.Drawing.Size(249, 23);
             this.barCreatureHP.TabIndex = 5;
             // 
             // barPlayerHP
             // 
-            this.barPlayerHP.Location = new System.Drawing.Point(21, 166);
+            this.barPlayerHP.Location = new System.Drawing.Point(21, 232);
             this.barPlayerHP.Name = "barPlayerHP";
             this.barPlayerHP.Size = new System.Drawing.Size(100, 23);
             this.barPlayerHP.TabIndex = 6;
-            this.barPlayerHP.Value = 50;
+            this.barPlayerHP.Value = 100;
             // 
             // btnAttack
             // 
@@ -200,7 +203,7 @@
             // 
             // debugStart
             // 
-            this.debugStart.Location = new System.Drawing.Point(170, 367);
+            this.debugStart.Location = new System.Drawing.Point(170, 388);
             this.debugStart.Name = "debugStart";
             this.debugStart.Size = new System.Drawing.Size(90, 41);
             this.debugStart.TabIndex = 11;
@@ -210,7 +213,7 @@
             // 
             // debugContinue
             // 
-            this.debugContinue.Location = new System.Drawing.Point(170, 414);
+            this.debugContinue.Location = new System.Drawing.Point(170, 435);
             this.debugContinue.Name = "debugContinue";
             this.debugContinue.Size = new System.Drawing.Size(90, 41);
             this.debugContinue.TabIndex = 12;
@@ -220,7 +223,7 @@
             // 
             // debugSpell
             // 
-            this.debugSpell.Location = new System.Drawing.Point(138, 472);
+            this.debugSpell.Location = new System.Drawing.Point(138, 493);
             this.debugSpell.Name = "debugSpell";
             this.debugSpell.Size = new System.Drawing.Size(48, 41);
             this.debugSpell.TabIndex = 13;
@@ -230,7 +233,7 @@
             // 
             // debugSkill
             // 
-            this.debugSkill.Location = new System.Drawing.Point(192, 472);
+            this.debugSkill.Location = new System.Drawing.Point(192, 493);
             this.debugSkill.Name = "debugSkill";
             this.debugSkill.Size = new System.Drawing.Size(48, 41);
             this.debugSkill.TabIndex = 14;
@@ -240,7 +243,7 @@
             // 
             // debugStrength
             // 
-            this.debugStrength.Location = new System.Drawing.Point(246, 472);
+            this.debugStrength.Location = new System.Drawing.Point(246, 493);
             this.debugStrength.Name = "debugStrength";
             this.debugStrength.Size = new System.Drawing.Size(48, 41);
             this.debugStrength.TabIndex = 15;
@@ -248,11 +251,32 @@
             this.debugStrength.UseVisualStyleBackColor = true;
             this.debugStrength.Click += new System.EventHandler(this.debugStrength_Click);
             // 
+            // lblBarPlayer
+            // 
+            this.lblBarPlayer.AutoSize = true;
+            this.lblBarPlayer.Location = new System.Drawing.Point(18, 258);
+            this.lblBarPlayer.Name = "lblBarPlayer";
+            this.lblBarPlayer.Size = new System.Drawing.Size(48, 13);
+            this.lblBarPlayer.TabIndex = 16;
+            this.lblBarPlayer.Text = "100/100";
+            // 
+            // lblBarCreature
+            // 
+            this.lblBarCreature.AutoSize = true;
+            this.lblBarCreature.Location = new System.Drawing.Point(820, 258);
+            this.lblBarCreature.Name = "lblBarCreature";
+            this.lblBarCreature.Size = new System.Drawing.Size(20, 17);
+            this.lblBarCreature.TabIndex = 17;
+            this.lblBarCreature.Text = "0/0";
+            this.lblBarCreature.UseCompatibleTextRendering = true;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.lblBarCreature);
+            this.Controls.Add(this.lblBarPlayer);
             this.Controls.Add(this.debugStrength);
             this.Controls.Add(this.debugSkill);
             this.Controls.Add(this.debugSpell);
@@ -306,6 +330,8 @@
         private System.Windows.Forms.Button debugSpell;
         private System.Windows.Forms.Button debugSkill;
         private System.Windows.Forms.Button debugStrength;
+        private System.Windows.Forms.Label lblBarPlayer;
+        private System.Windows.Forms.Label lblBarCreature;
     }
 }
 
