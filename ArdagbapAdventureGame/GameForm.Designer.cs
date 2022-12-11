@@ -54,6 +54,7 @@
             this.lblCreatureDmg = new System.Windows.Forms.Label();
             this.lblCreatureType = new System.Windows.Forms.Label();
             this.btnPopulateCard = new System.Windows.Forms.Button();
+            this.debugUse = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCreature)).BeginInit();
             this.panelEvent.SuspendLayout();
@@ -191,7 +192,7 @@
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(90, 41);
             this.btnRun.TabIndex = 9;
-            this.btnRun.Text = "Run";
+            this.btnRun.Text = "Investigate";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
@@ -306,11 +307,22 @@
             this.btnPopulateCard.UseVisualStyleBackColor = true;
             this.btnPopulateCard.Click += new System.EventHandler(this.btnPopulateCard_Click);
             // 
+            // debugUse
+            // 
+            this.debugUse.Location = new System.Drawing.Point(266, 435);
+            this.debugUse.Name = "debugUse";
+            this.debugUse.Size = new System.Drawing.Size(55, 41);
+            this.debugUse.TabIndex = 21;
+            this.debugUse.Text = "Debug Use";
+            this.debugUse.UseVisualStyleBackColor = true;
+            this.debugUse.Click += new System.EventHandler(this.debugUse_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.debugUse);
             this.Controls.Add(this.btnPopulateCard);
             this.Controls.Add(this.lblCreatureType);
             this.Controls.Add(this.lblCreatureDmg);
@@ -374,6 +386,7 @@
         private System.Windows.Forms.Label lblCreatureDmg;
         private System.Windows.Forms.Label lblCreatureType;
         private System.Windows.Forms.Button btnPopulateCard;
+        private System.Windows.Forms.Button debugUse;
     }
 }
 
