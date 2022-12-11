@@ -12,16 +12,13 @@ namespace ArdagbapAdventureGame
         public int CreatureCurrentHealth;
         private int CreatureMaxHealth;
         private int CreatureDamage;
-        private List<Card> PlayerDeck;
-        private List<Card> PlayerHand;
-        private List<Card> PlayerDiscardPile;
         public Image CreatureImage;
 
-        public CreatureCombat(string eventName, Image eventImage, string eventDescription, string eventType, Image creatureImage) : base(eventName, eventImage, eventDescription, eventType)
+        public CreatureCombat(string eventName, Image eventImage, string eventType, Image creatureImage, int creatureMaxHealth, int creatureDamage) : base(eventName, eventImage, eventType)
         {
-            CreatureCurrentHealth = 100;
-            CreatureMaxHealth = 100;
-            CreatureDamage = 1;
+            CreatureMaxHealth = creatureMaxHealth;
+            CreatureCurrentHealth = creatureMaxHealth;
+            CreatureDamage = creatureDamage;
             CreatureImage = creatureImage;
         }
 

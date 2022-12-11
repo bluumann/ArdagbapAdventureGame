@@ -11,7 +11,7 @@ namespace ArdagbapAdventureGame
     {
         private List<Card> AvailableItems;
 
-        public Store(string eventName, Image eventImage, string eventDescription, string eventType) : base(eventName, eventImage, eventDescription, eventType)
+        public Store(string eventName, Image eventImage, string eventDescription, string eventType) : base(eventName, eventImage, eventType)
         {
         }
 

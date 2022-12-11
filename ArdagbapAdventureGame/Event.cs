@@ -14,11 +14,10 @@ namespace ArdagbapAdventureGame
         public string EventDescription;
         public string EventType;
 
-        protected Event(string eventName, Image eventImage, string eventDescription, string eventType)
+        protected Event(string eventName, Image eventImage, string eventType)
         {
             EventName = eventName;
             EventImage = eventImage;
-            EventDescription = eventDescription;
             EventType = eventType;
         }
 
