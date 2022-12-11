@@ -51,6 +51,8 @@
             this.debugStrength = new System.Windows.Forms.Button();
             this.lblBarPlayer = new System.Windows.Forms.Label();
             this.lblBarCreature = new System.Windows.Forms.Label();
+            this.lblCreatureDmg = new System.Windows.Forms.Label();
+            this.lblCreatureType = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCreature)).BeginInit();
             this.panelEvent.SuspendLayout();
@@ -61,7 +63,7 @@
             // 
             this.panelCard.Location = new System.Drawing.Point(329, 363);
             this.panelCard.Name = "panelCard";
-            this.panelCard.Size = new System.Drawing.Size(743, 186);
+            this.panelCard.Size = new System.Drawing.Size(729, 186);
             this.panelCard.TabIndex = 0;
             // 
             // picPlayer
@@ -74,9 +76,9 @@
             // 
             // picCreature
             // 
-            this.picCreature.Location = new System.Drawing.Point(852, 42);
+            this.picCreature.Location = new System.Drawing.Point(823, 42);
             this.picCreature.Name = "picCreature";
-            this.picCreature.Size = new System.Drawing.Size(196, 184);
+            this.picCreature.Size = new System.Drawing.Size(235, 184);
             this.picCreature.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picCreature.TabIndex = 2;
             this.picCreature.TabStop = false;
@@ -104,7 +106,7 @@
             // lblEventType
             // 
             this.lblEventType.AutoSize = true;
-            this.lblEventType.Location = new System.Drawing.Point(574, 12);
+            this.lblEventType.Location = new System.Drawing.Point(473, 12);
             this.lblEventType.Name = "lblEventType";
             this.lblEventType.Size = new System.Drawing.Size(62, 13);
             this.lblEventType.TabIndex = 15;
@@ -141,7 +143,7 @@
             // 
             this.lblCreatureName.AutoSize = true;
             this.lblCreatureName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCreatureName.Location = new System.Drawing.Point(848, 19);
+            this.lblCreatureName.Location = new System.Drawing.Point(819, 17);
             this.lblCreatureName.Name = "lblCreatureName";
             this.lblCreatureName.Size = new System.Drawing.Size(98, 20);
             this.lblCreatureName.TabIndex = 4;
@@ -151,7 +153,7 @@
             // 
             this.barCreatureHP.Location = new System.Drawing.Point(823, 232);
             this.barCreatureHP.Name = "barCreatureHP";
-            this.barCreatureHP.Size = new System.Drawing.Size(249, 23);
+            this.barCreatureHP.Size = new System.Drawing.Size(235, 23);
             this.barCreatureHP.TabIndex = 5;
             // 
             // barPlayerHP
@@ -190,6 +192,7 @@
             this.btnRun.TabIndex = 9;
             this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnExit
             // 
@@ -270,11 +273,35 @@
             this.lblBarCreature.Text = "0/0";
             this.lblBarCreature.UseCompatibleTextRendering = true;
             // 
+            // lblCreatureDmg
+            // 
+            this.lblCreatureDmg.AutoSize = true;
+            this.lblCreatureDmg.Location = new System.Drawing.Point(820, 275);
+            this.lblCreatureDmg.Name = "lblCreatureDmg";
+            this.lblCreatureDmg.Size = new System.Drawing.Size(79, 17);
+            this.lblCreatureDmg.TabIndex = 18;
+            this.lblCreatureDmg.Tag = "";
+            this.lblCreatureDmg.Text = "Base Damage:";
+            this.lblCreatureDmg.UseCompatibleTextRendering = true;
+            // 
+            // lblCreatureType
+            // 
+            this.lblCreatureType.AutoSize = true;
+            this.lblCreatureType.Location = new System.Drawing.Point(820, 292);
+            this.lblCreatureType.Name = "lblCreatureType";
+            this.lblCreatureType.Size = new System.Drawing.Size(68, 17);
+            this.lblCreatureType.TabIndex = 19;
+            this.lblCreatureType.Tag = "";
+            this.lblCreatureType.Text = "Enemy Type";
+            this.lblCreatureType.UseCompatibleTextRendering = true;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.lblCreatureType);
+            this.Controls.Add(this.lblCreatureDmg);
             this.Controls.Add(this.lblBarCreature);
             this.Controls.Add(this.lblBarPlayer);
             this.Controls.Add(this.debugStrength);
@@ -332,6 +359,8 @@
         private System.Windows.Forms.Button debugStrength;
         private System.Windows.Forms.Label lblBarPlayer;
         private System.Windows.Forms.Label lblBarCreature;
+        private System.Windows.Forms.Label lblCreatureDmg;
+        private System.Windows.Forms.Label lblCreatureType;
     }
 }
 

@@ -46,7 +46,7 @@ namespace ArdagbapAdventureGame
             Names.Add("the Coleen");
             Names.Add("the Bedron");
             Names.Add("the Kosa");
-            Names.Add("the Buddeh");
+            Names.Add("the Greatest Buddeh");
             Names.Add("the Tiger Gheist");
             Names.Add("Duck Quackor");
             Names.Add("Dom Metal");
@@ -57,11 +57,12 @@ namespace ArdagbapAdventureGame
             Names.Add("Final Project");
 
             Events.Add(new DialogEncounter("A Dank and Dark Prison", img_Room, GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
+            
             Events.Add(new DialogEncounter("Scene 1", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
-            Events.Add(new CreatureCombat("Combat 1", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 100, 10));
+            Events.Add(new CreatureCombat("Combat 1", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 50, 5));
             Events.Add(new DialogEncounter("Scene 2", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 3", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
-            Events.Add(new CreatureCombat("Combat 2", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 100, 10));
+            Events.Add(new CreatureCombat("Combat 2", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 50, 7));
             Events.Add(new DialogEncounter("Scene 4", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 5", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 6", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
@@ -69,7 +70,7 @@ namespace ArdagbapAdventureGame
             Events.Add(new DialogEncounter("Scene 7", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 8", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
 
-            Events.Add(new DialogEncounter("A Cosmic Ending", img_Cosmic, GenerateClass(ReceiveRandom(3)), ReceiveRandom(5)));
+            Events.Add(new CreatureCombat("A Cosmic Ending", img_Cosmic, "The End of All Things", ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 250, 15));
 
         }
 
