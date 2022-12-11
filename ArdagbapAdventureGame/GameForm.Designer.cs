@@ -53,6 +53,7 @@
             this.lblBarCreature = new System.Windows.Forms.Label();
             this.lblCreatureDmg = new System.Windows.Forms.Label();
             this.lblCreatureType = new System.Windows.Forms.Label();
+            this.btnPopulateCard = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCreature)).BeginInit();
             this.panelEvent.SuspendLayout();
@@ -295,11 +296,22 @@
             this.lblCreatureType.Text = "Enemy Type";
             this.lblCreatureType.UseCompatibleTextRendering = true;
             // 
+            // btnPopulateCard
+            // 
+            this.btnPopulateCard.Location = new System.Drawing.Point(266, 388);
+            this.btnPopulateCard.Name = "btnPopulateCard";
+            this.btnPopulateCard.Size = new System.Drawing.Size(55, 41);
+            this.btnPopulateCard.TabIndex = 20;
+            this.btnPopulateCard.Text = "Debug Cards";
+            this.btnPopulateCard.UseVisualStyleBackColor = true;
+            this.btnPopulateCard.Click += new System.EventHandler(this.btnPopulateCard_Click);
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.btnPopulateCard);
             this.Controls.Add(this.lblCreatureType);
             this.Controls.Add(this.lblCreatureDmg);
             this.Controls.Add(this.lblBarCreature);
@@ -361,6 +373,7 @@
         private System.Windows.Forms.Label lblBarCreature;
         private System.Windows.Forms.Label lblCreatureDmg;
         private System.Windows.Forms.Label lblCreatureType;
+        private System.Windows.Forms.Button btnPopulateCard;
     }
 }
 
