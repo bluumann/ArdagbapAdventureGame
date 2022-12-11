@@ -312,7 +312,7 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + "is immune to your petty magic.");
+                        MessageBox.Show(lblCreatureName.Text + " is immune to your petty magic.");
                     }
                 }
                 else if (type == "Skill")//roguecasting!
@@ -333,14 +333,14 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + "is immune to your coniving schemes.");
+                        MessageBox.Show(lblCreatureName.Text + " is immune to your coniving schemes.");
                     }
                 }
                 else if (type == "Strength")//wariorcasting!
                 {
                     if (lblCreatureType.Text == "Wizard")
                     {
-                        MessageBox.Show("How can steel best magic?" + lblCreatureName.Text + " turns your attack back at you!");
+                        MessageBox.Show("How can steel best magic? " + lblCreatureName.Text + " turns your attack back at you!");
                         CalculateDamage(0, rnd.Next(1, 6));
                     }
                     else if (lblCreatureType.Text == "Rogue")
@@ -354,7 +354,7 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + "is ignores your might.");
+                        MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
             }
@@ -377,5 +377,6 @@ namespace ArdagbapAdventureGame
         {
             
         }
+
     }
 }

@@ -55,6 +55,7 @@
             this.lblCreatureType = new System.Windows.Forms.Label();
             this.btnPopulateCard = new System.Windows.Forms.Button();
             this.debugUse = new System.Windows.Forms.Button();
+            this.textPlayer = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCreature)).BeginInit();
             this.panelEvent.SuspendLayout();
@@ -160,7 +161,7 @@
             // 
             // barPlayerHP
             // 
-            this.barPlayerHP.Location = new System.Drawing.Point(21, 232);
+            this.barPlayerHP.Location = new System.Drawing.Point(21, 169);
             this.barPlayerHP.Name = "barPlayerHP";
             this.barPlayerHP.Size = new System.Drawing.Size(100, 23);
             this.barPlayerHP.TabIndex = 6;
@@ -168,7 +169,7 @@
             // 
             // btnAttack
             // 
-            this.btnAttack.Location = new System.Drawing.Point(21, 367);
+            this.btnAttack.Location = new System.Drawing.Point(27, 363);
             this.btnAttack.Name = "btnAttack";
             this.btnAttack.Size = new System.Drawing.Size(90, 41);
             this.btnAttack.TabIndex = 7;
@@ -178,7 +179,7 @@
             // 
             // btnRest
             // 
-            this.btnRest.Location = new System.Drawing.Point(21, 414);
+            this.btnRest.Location = new System.Drawing.Point(27, 410);
             this.btnRest.Name = "btnRest";
             this.btnRest.Size = new System.Drawing.Size(90, 41);
             this.btnRest.TabIndex = 8;
@@ -188,7 +189,7 @@
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(21, 461);
+            this.btnRun.Location = new System.Drawing.Point(27, 457);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(90, 41);
             this.btnRun.TabIndex = 9;
@@ -198,7 +199,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(21, 508);
+            this.btnExit.Location = new System.Drawing.Point(27, 504);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(90, 41);
             this.btnExit.TabIndex = 10;
@@ -259,7 +260,7 @@
             // lblBarPlayer
             // 
             this.lblBarPlayer.AutoSize = true;
-            this.lblBarPlayer.Location = new System.Drawing.Point(18, 258);
+            this.lblBarPlayer.Location = new System.Drawing.Point(18, 195);
             this.lblBarPlayer.Name = "lblBarPlayer";
             this.lblBarPlayer.Size = new System.Drawing.Size(48, 13);
             this.lblBarPlayer.TabIndex = 16;
@@ -317,11 +318,21 @@
             this.debugUse.UseVisualStyleBackColor = true;
             this.debugUse.Click += new System.EventHandler(this.debugUse_Click);
             // 
+            // textPlayer
+            // 
+            this.textPlayer.Location = new System.Drawing.Point(12, 255);
+            this.textPlayer.Name = "textPlayer";
+            this.textPlayer.ReadOnly = true;
+            this.textPlayer.Size = new System.Drawing.Size(120, 97);
+            this.textPlayer.TabIndex = 17;
+            this.textPlayer.Text = "";
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.textPlayer);
             this.Controls.Add(this.debugUse);
             this.Controls.Add(this.btnPopulateCard);
             this.Controls.Add(this.lblCreatureType);
@@ -387,6 +398,7 @@
         private System.Windows.Forms.Label lblCreatureType;
         private System.Windows.Forms.Button btnPopulateCard;
         private System.Windows.Forms.Button debugUse;
+        private System.Windows.Forms.RichTextBox textPlayer;
     }
 }
 
