@@ -36,21 +36,23 @@
             // 
             // lblCardName
             // 
-            this.lblCardName.AutoSize = true;
             this.lblCardName.Location = new System.Drawing.Point(35, 14);
             this.lblCardName.Name = "lblCardName";
             this.lblCardName.Size = new System.Drawing.Size(70, 13);
             this.lblCardName.TabIndex = 0;
             this.lblCardName.Text = "This is a card";
             this.lblCardName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCardName.Click += new System.EventHandler(this.CardCC_Click);
             // 
             // pictureBoxElement
             // 
             this.pictureBoxElement.Location = new System.Drawing.Point(33, 35);
             this.pictureBoxElement.Name = "pictureBoxElement";
             this.pictureBoxElement.Size = new System.Drawing.Size(75, 75);
+            this.pictureBoxElement.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxElement.TabIndex = 1;
             this.pictureBoxElement.TabStop = false;
+            this.pictureBoxElement.Click += new System.EventHandler(this.CardCC_Click);
             // 
             // lblDescription
             // 
@@ -60,6 +62,7 @@
             this.lblDescription.TabIndex = 2;
             this.lblDescription.Text = "This is where we will put our short description";
             this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblDescription.Click += new System.EventHandler(this.CardCC_Click);
             // 
             // CardCC
             // 
@@ -71,9 +74,9 @@
             this.Controls.Add(this.lblCardName);
             this.Name = "CardCC";
             this.Size = new System.Drawing.Size(140, 180);
+            this.Click += new System.EventHandler(this.CardCC_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxElement)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

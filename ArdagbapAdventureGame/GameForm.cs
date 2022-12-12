@@ -21,6 +21,11 @@ namespace ArdagbapAdventureGame
         
         Random rnd = new Random();
 
+        Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("D_Leonan.png") };
+        Card strongCard = new Card() { CardName = "Strong Card", CardType = "Strong", CardDescription = "This is a strong card.", CardImage = Image.FromFile("D_Metal.png") };
+        Card spellCard = new Card() { CardName = "Spell Card", CardType = "Spell", CardDescription = "This is a spell card.", CardImage = Image.FromFile("D_Wizard.png") };
+
+
         public GameForm()
         {
             InitializeComponent();
@@ -368,9 +373,68 @@ namespace ArdagbapAdventureGame
             else barPlayerHP.Value += -creatureDmg;
             UpdateCombat();
         }
+        // Populate the card panel section with cards
         private void btnPopulateCard_Click(object sender, EventArgs e)
         {
+            //Clear for refresh
+            panelCard.Controls.Clear();
 
+            //Create a list of possible cards
+            List<Card> possibleCards = new List<Card>();
+            possibleCards.Add(skillCard);
+            possibleCards.Add(strongCard);
+            possibleCards.Add(spellCard);
+
+            //For picking random cards
+            Random random = new Random();
+
+            //Create a list of the random cards to fill the panel with options
+            List<Card> availableCards= new List<Card>();
+            availableCards.Add(possibleCards[random.Next(0, 3)]);
+            availableCards.Add(possibleCards[random.Next(0, 3)]);
+            availableCards.Add(possibleCards[random.Next(0, 3)]);
+            availableCards.Add(possibleCards[random.Next(0, 3)]);
+            availableCards.Add(possibleCards[random.Next(0, 3)]);
+
+            //Create our custom controls and add them to a list
+            CardCC card1 = new CardCC();
+            CardCC card2 = new CardCC();
+            CardCC card3 = new CardCC();
+            CardCC card4 = new CardCC();
+            CardCC card5 = new CardCC();
+
+            List<CardCC> cardCCs = new List<CardCC>() { card1, card2, card3, card4, card5};
+            
+            //For placement
+            int xAxis = 0;
+
+            //Assign values to our shown cards
+            for (int i = 0; i < 5; i++)
+            {
+                cardCCs[i].LabelName = availableCards[i].CardName;
+                cardCCs[i].CardType = availableCards[i].CardType;
+                cardCCs[i].LabelDesc = availableCards[i].CardDescription;
+                cardCCs[i].CardElement = availableCards[i].CardImage;
+
+                cardCCs[i].Location = new Point(xAxis - panelCard.HorizontalScroll.Value, 0);
+                xAxis += cardCCs[i].Width + 5;
+
+                panelCard.Controls.Add(cardCCs[i]);
+            }
+        }
+
+        //Trying to call from inside CardCC
+        public void checkResult(string cardType)
+        {
+            if (Adventure.Events[Adventure.CurrentPath].EventType == cardType)
+            {
+                MessageBox.Show(Result(true));
+                Advance();
+            }
+            else
+            {
+                MessageBox.Show(Result(false));
+            }
         }
 
         private void debugUse_Click(object sender, EventArgs e)
