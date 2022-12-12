@@ -12,9 +12,12 @@ namespace ArdagbapAdventureGame
 {
     public partial class CardCC : UserControl
     {
-        public CardCC()
+        GameForm gameform;
+
+        public CardCC(GameForm gameform)
         {
             InitializeComponent();
+            this.gameform = gameform;
         }
 
         public string CardType { get; set; }
@@ -51,8 +54,7 @@ namespace ArdagbapAdventureGame
 
         private void CardCC_Click(object sender, EventArgs e)
         {
-            //GameForm.checkResult(CardType);
-            MessageBox.Show("Working");
+            gameform.UseCard(CardType);
         }
     }
 }

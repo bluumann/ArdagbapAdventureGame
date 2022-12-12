@@ -22,22 +22,22 @@ namespace ArdagbapAdventureGame
         Random rnd = new Random();
 
         Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("D_Leonan.png") };
-        Card strongCard = new Card() { CardName = "Strong Card", CardType = "Strong", CardDescription = "This is a strong card.", CardImage = Image.FromFile("D_Metal.png") };
+        Card strongCard = new Card() { CardName = "Strength Card", CardType = "Strength", CardDescription = "This is a strong card.", CardImage = Image.FromFile("D_Metal.png") };
         Card spellCard = new Card() { CardName = "Spell Card", CardType = "Spell", CardDescription = "This is a spell card.", CardImage = Image.FromFile("D_Wizard.png") };
 
+        MainMenu menu;
 
-        public GameForm()
+        public GameForm(MainMenu main)
         {
+            menu = main;
             InitializeComponent();
             EndCombat(); //clears combat indicators that exist for placeholder on design form.
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            MainMenu mainMenu = new MainMenu();
             this.Hide();
-            mainMenu.ShowDialog();
-            this.Close();
+            menu.Show();
         }
 
         //debug commands begin
@@ -186,10 +186,8 @@ namespace ArdagbapAdventureGame
             if (barPlayerHP.Value == 0)
             {
                 MessageBox.Show("You hitpoints were reduced to zero, you lose.");
-
-                MainMenu mainMenu = new MainMenu();
                 this.Hide();
-                mainMenu.ShowDialog();
+                menu.ShowDialog();
                 this.Close();
             }
             if (barCreatureHP.Value == 0 && lblCreatureName.Text != "No Combat")
@@ -243,7 +241,7 @@ namespace ArdagbapAdventureGame
             return message;
         }
 
-        private void UseCard(string type)
+        public void UseCard(string type)
         {
             if (lblEventType.Text == "Spell")
             {
@@ -397,11 +395,11 @@ namespace ArdagbapAdventureGame
             availableCards.Add(possibleCards[random.Next(0, 3)]);
 
             //Create our custom controls and add them to a list
-            CardCC card1 = new CardCC();
-            CardCC card2 = new CardCC();
-            CardCC card3 = new CardCC();
-            CardCC card4 = new CardCC();
-            CardCC card5 = new CardCC();
+            CardCC card1 = new CardCC(this);
+            CardCC card2 = new CardCC(this);
+            CardCC card3 = new CardCC(this);
+            CardCC card4 = new CardCC(this);
+            CardCC card5 = new CardCC(this);
 
             List<CardCC> cardCCs = new List<CardCC>() { card1, card2, card3, card4, card5};
             
