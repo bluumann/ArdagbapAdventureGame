@@ -77,10 +77,8 @@ namespace ArdagbapAdventureGame
             if (Adventure.CurrentPath == Adventure.Events.Count - 1)
             {
                 MessageBox.Show("Congratulations, you won!!!");
-                MainMenu mainMenu = new MainMenu();
                 this.Hide();
-                mainMenu.ShowDialog();
-                this.Close();
+                menu.Show();
             }
 
             hasAction = true;
@@ -188,7 +186,6 @@ namespace ArdagbapAdventureGame
                 MessageBox.Show("You hitpoints were reduced to zero, you lose.");
                 this.Hide();
                 menu.ShowDialog();
-                this.Close();
             }
             if (barCreatureHP.Value == 0 && lblCreatureName.Text != "No Combat")
             {
