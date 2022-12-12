@@ -320,10 +320,10 @@
             // 
             // textPlayer
             // 
-            this.textPlayer.Location = new System.Drawing.Point(12, 255);
+            this.textPlayer.Location = new System.Drawing.Point(12, 211);
             this.textPlayer.Name = "textPlayer";
             this.textPlayer.ReadOnly = true;
-            this.textPlayer.Size = new System.Drawing.Size(120, 97);
+            this.textPlayer.Size = new System.Drawing.Size(120, 132);
             this.textPlayer.TabIndex = 17;
             this.textPlayer.Text = "";
             // 
