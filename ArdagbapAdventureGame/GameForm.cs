@@ -363,12 +363,7 @@ namespace ArdagbapAdventureGame
                     }
                 }
             }
-            drawnCard = possibleCards[rnd.Next(possibleCards.Count)];
-
-            clickedCard.LabelName = drawnCard.CardName;
-            clickedCard.CardType = drawnCard.CardType;
-            clickedCard.LabelDesc = drawnCard.CardDescription;
-            clickedCard.CardElement = drawnCard.CardImage;
+            panelCard.Controls.Remove(clickedCard);
         }
         private void CalculateDamage(int playerDmg, int creatureDmg)
         {
