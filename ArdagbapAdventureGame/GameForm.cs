@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,6 +25,10 @@ namespace ArdagbapAdventureGame
         Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("D_Leonan.png") };
         Card strongCard = new Card() { CardName = "Strength Card", CardType = "Strength", CardDescription = "This is a strong card.", CardImage = Image.FromFile("D_Metal.png") };
         Card spellCard = new Card() { CardName = "Spell Card", CardType = "Spell", CardDescription = "This is a spell card.", CardImage = Image.FromFile("D_Wizard.png") };
+
+        List<CardCC> cardCCs;
+        List<Card> possibleCards;
+        Card drawnCard;
 
         MainMenu menu;
 
@@ -57,17 +62,17 @@ namespace ArdagbapAdventureGame
 
         private void debugSpell_Click(object sender, EventArgs e)
         {
-            UseCard("Spell");
+            //UseCard("Spell");
         }
 
         private void debugSkill_Click(object sender, EventArgs e)
         {
-            UseCard("Skill");
+            //UseCard("Skill");
         }
 
         private void debugStrength_Click(object sender, EventArgs e)
         {
-            UseCard("Strength");
+            //UseCard("Strength");
         }
 
         //debug commands end
@@ -238,7 +243,7 @@ namespace ArdagbapAdventureGame
             return message;
         }
 
-        public void UseCard(string type)
+        public void UseCard(string type, CardCC clickedCard)
         {
             if (lblEventType.Text == "Spell")
             {
@@ -358,6 +363,12 @@ namespace ArdagbapAdventureGame
                     }
                 }
             }
+            drawnCard = possibleCards[rnd.Next(possibleCards.Count)];
+
+            clickedCard.LabelName = drawnCard.CardName;
+            clickedCard.CardType = drawnCard.CardType;
+            clickedCard.LabelDesc = drawnCard.CardDescription;
+            clickedCard.CardElement = drawnCard.CardImage;
         }
         private void CalculateDamage(int playerDmg, int creatureDmg)
         {
@@ -375,22 +386,8 @@ namespace ArdagbapAdventureGame
             panelCard.Controls.Clear();
 
             //Create a list of possible cards
-            List<Card> possibleCards = new List<Card>();
-            possibleCards.Add(skillCard);
-            possibleCards.Add(strongCard);
-            possibleCards.Add(spellCard);
-
-            //For picking random cards
-            Random random = new Random();
-
-            //Create a list of the random cards to fill the panel with options
-            List<Card> availableCards= new List<Card>();
-            availableCards.Add(possibleCards[random.Next(0, 3)]);
-            availableCards.Add(possibleCards[random.Next(0, 3)]);
-            availableCards.Add(possibleCards[random.Next(0, 3)]);
-            availableCards.Add(possibleCards[random.Next(0, 3)]);
-            availableCards.Add(possibleCards[random.Next(0, 3)]);
-
+            possibleCards = new List<Card>() { skillCard, strongCard, spellCard };
+            
             //Create our custom controls and add them to a list
             CardCC card1 = new CardCC(this);
             CardCC card2 = new CardCC(this);
@@ -398,7 +395,7 @@ namespace ArdagbapAdventureGame
             CardCC card4 = new CardCC(this);
             CardCC card5 = new CardCC(this);
 
-            List<CardCC> cardCCs = new List<CardCC>() { card1, card2, card3, card4, card5};
+            cardCCs = new List<CardCC>() { card1, card2, card3, card4, card5};
             
             //For placement
             int xAxis = 0;
@@ -406,10 +403,12 @@ namespace ArdagbapAdventureGame
             //Assign values to our shown cards
             for (int i = 0; i < 5; i++)
             {
-                cardCCs[i].LabelName = availableCards[i].CardName;
-                cardCCs[i].CardType = availableCards[i].CardType;
-                cardCCs[i].LabelDesc = availableCards[i].CardDescription;
-                cardCCs[i].CardElement = availableCards[i].CardImage;
+                drawnCard = possibleCards[rnd.Next(possibleCards.Count)];
+
+                cardCCs[i].LabelName = drawnCard.CardName;
+                cardCCs[i].CardType = drawnCard.CardType;
+                cardCCs[i].LabelDesc = drawnCard.CardDescription;
+                cardCCs[i].CardElement = drawnCard.CardImage;
 
                 cardCCs[i].Location = new Point(xAxis - panelCard.HorizontalScroll.Value, 0);
                 xAxis += cardCCs[i].Width + 5;

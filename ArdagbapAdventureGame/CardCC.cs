@@ -54,7 +54,7 @@ namespace ArdagbapAdventureGame
 
         private void CardCC_Click(object sender, EventArgs e)
         {
-            gameform.UseCard(CardType);
+            gameform.UseCard(CardType, this);
         }
     }
 }
