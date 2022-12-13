@@ -30,6 +30,17 @@ namespace ArdagbapAdventureGame
         List<Card> possibleCards;
         Card drawnCard;
 
+        // Buffs
+        bool hasBossBuff = false;
+        bool hasBuffHP = false;
+        bool hasBuffBaseDamage = false;
+        bool hasBuffRest = false;
+        bool hasBuffDef = false;
+        int buffHP = 0;
+        int buffBaseDamage = 0;
+        int buffRest = 0;
+        int buffDef = 0;
+
         MainMenu menu;
 
         public GameForm(MainMenu main)
@@ -159,11 +170,15 @@ namespace ArdagbapAdventureGame
         {
             if (hasAction && lblEventType.Text != "Combat")
             {
-                if (barPlayerHP.Value + 15 >= 100) barPlayerHP.Value = 100;
-                else barPlayerHP.Value += 15;
-                MessageBox.Show("You rest and recover 15HP.");
+                if (barPlayerHP.Value + 15 + buffRest >= 100 + buffHP) barPlayerHP.Value = 100 + buffHP;
+                else barPlayerHP.Value += 15 + buffRest;
+                MessageBox.Show("You rest and recover " + (15 + buffHP) + "HP.");
                 hasAction = false;
                 UpdateCombat();
+            }
+            else if (lblEventType.Text == "Combat")
+            {
+                MessageBox.Show("You cannot rest during combat...");
             }
             else MessageBox.Show("You've already rested or investigated this area.");
             
@@ -171,9 +186,113 @@ namespace ArdagbapAdventureGame
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            string investigateHP = "You come across an elderly lady and are offered a warm bowl of soup. Do you accept?";
+            string investigateRest = "You find a bush filled with tasty looking berries, stop and pick some?";
+            string investigateDMG = "You come across a pile of unattended weapons, take one?";
+            string investigateDEF = "You see an elderly looking man with a large pile of loot, try and take some for yourself?";
+
+            List<string> investigations = new List<string>() { investigateHP, investigateRest, investigateDMG, investigateDEF };
+
             if (hasAction)
             {
-                MessageBox.Show("You investigate the area.");
+                string currentBuff;
+                bool buffCheck = true;
+                while (buffCheck)
+                {
+                    currentBuff = investigations[rnd.Next(investigations.Count)];
+                    if (hasBossBuff)
+                    {
+                        MessageBox.Show("What a beautiful view...", "Investigate", MessageBoxButtons.OK);
+                        buffCheck = false;
+                    }
+                    else if (currentBuff == investigateHP && !hasBuffHP)
+                    {
+                        DialogResult dialogResult = MessageBox.Show(currentBuff, "Investigation", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            textPlayer.Text += "Health +50\n";
+                            hasBuffHP = true;
+                            buffHP = 50;
+                            playerMaxHP += buffHP;
+                            barPlayerHP.Maximum = playerMaxHP;
+                            barPlayerHP.Value += buffHP;
+                            MessageBox.Show("The soup is delicious! You feel yourself gaining stamina.", "Result", MessageBoxButtons.OK);
+                            UpdateCombat();
+                        }
+                        else MessageBox.Show("You decide not to take any soup, after all, you have no idea who this lady is.", "Result", MessageBoxButtons.OK);
+                        buffCheck = false;
+                    }
+                    else if (currentBuff == investigateRest && !hasBuffRest)
+                    {
+                        DialogResult dialogResult = MessageBox.Show(currentBuff, "Investigation", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            textPlayer.Text += "Rest +15\n";
+                            hasBuffRest = true;
+                            buffRest = 15;
+                            MessageBox.Show("You decided to pick some berries. These might come in handy later and will help when you need to rest!", "Result", MessageBoxButtons.OK);
+                        }
+                        else MessageBox.Show("You decide not to take any berries, after all, they could be poisonous!", "Result", MessageBoxButtons.OK);
+                        buffCheck = false;
+                    }
+                    else if (currentBuff == investigateDMG && !hasBuffBaseDamage)
+                    {
+                        DialogResult dialogResult = MessageBox.Show(currentBuff, "Investigation", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.No)
+                        {
+                            textPlayer.Text += "Damage +5\n";
+                            hasBuffBaseDamage = true;
+                            buffBaseDamage = 5;
+                            MessageBox.Show("You decide against taking any of the weapons as they may belong to someone. " +
+                                "However as you are about to walk away you hear someone shout. " +
+                                "'Ah, another adventurer! Here take a weapon! It should prove useful on your journey!'", "Result", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            MessageBox.Show("As you reach down to get a weapon you feel something strike the back of your head. " +
+                            "'THIEF! THIEF! GET AWAY FROM MY WEAPONS!' " +
+                            "You are chased away and take 5 points of damage.", "Result", MessageBoxButtons.OK);
+
+                            if (barPlayerHP.Value - 5 <= 0) barPlayerHP.Value = 0;
+                            else barPlayerHP.Value -= 5;
+                            UpdateCombat();
+                        }
+                        buffCheck = false;
+                    }
+                    else if (currentBuff == investigateDEF && !hasBuffDef)
+                    {
+                        DialogResult dialogResult = MessageBox.Show(currentBuff, "Investigation", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.No)
+                        {
+                            textPlayer.Text += "Defense +3\n";
+                            hasBuffDef = true;
+                            buffDef = 3;
+                            MessageBox.Show("You decide against taking any of the loot, after all it doesn't belong to you. " +
+                                "However as you are about to walk away you hear the old man say. " +
+                                "'Ah, another adventurer! Here let me show you how you can defend yourself!'", "Result", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            MessageBox.Show("As you approach to take some loot the elderly man strikes your hand. " +
+                            "'Bad idea my friend!' " +
+                            "You are chased away and take 5 points of damage.", "Result", MessageBoxButtons.OK);
+                            
+                            if (barPlayerHP.Value - 5 <= 0) barPlayerHP.Value = 0;
+                            else barPlayerHP.Value -= 5;
+                            UpdateCombat();
+                        }
+                        buffCheck = false;
+                    }
+                    else if (hasBuffHP && hasBuffRest && hasBuffBaseDamage && hasBuffDef)
+                    {
+                        MessageBox.Show("You discover some ancient texts and after taking some time to decipher them, you reveal an unknown weakness of a being called the great destroyer...", "Investigation", MessageBoxButtons.OK);
+                        textPlayer.Text += "Unknown Secrets Revealed";
+                        hasBossBuff = true;
+                        buffCheck = false;
+                    }
+                }
+
+                //MessageBox.Show("You investigate the area.");
                 hasAction = false;
                 //to expand upon.
             }
@@ -188,7 +307,7 @@ namespace ArdagbapAdventureGame
 
             if (barPlayerHP.Value == 0)
             {
-                MessageBox.Show("You hitpoints were reduced to zero, you lose.");
+                MessageBox.Show("Your hitpoints were reduced to zero, you lose.");
                 this.Hide();
                 menu.ShowDialog();
             }
@@ -308,12 +427,12 @@ namespace ArdagbapAdventureGame
                     else if (lblCreatureType.Text == "Rogue")
                     {
                         MessageBox.Show("You cast a spell at " + lblCreatureName.Text + ". The rogue seems laughs at you and sneak attacks for some damage.");
-                        CalculateDamage(0, rnd.Next(1, 6));
+                        CalculateDamage(0, rnd.Next(4, 6) - buffDef);
                     }
                     else if (lblCreatureType.Text == "Warrior")
                     {
                         MessageBox.Show("You cast a spell at " + lblCreatureName.Text + ". The spell breaks the warrior's defense and deals heavy damage.");
-                        CalculateDamage(playerBaseDamage + rnd.Next(1,11), 0);
+                        CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1,11), 0);
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
@@ -325,7 +444,7 @@ namespace ArdagbapAdventureGame
                     if (lblCreatureType.Text == "Wizard")
                     {
                         MessageBox.Show("You trick " + lblCreatureName.Text + ". Your foe is taken by surprise and takes heavy damage!");
-                        CalculateDamage(playerBaseDamage + rnd.Next(1, 11), 0);
+                        CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 11), 0);
                     }
                     else if (lblCreatureType.Text == "Rogue")
                     {
@@ -334,7 +453,7 @@ namespace ArdagbapAdventureGame
                     else if (lblCreatureType.Text == "Warrior")
                     {
                         MessageBox.Show("You try to outclass " + lblCreatureName.Text + ". However, he is too much for you and fights back!");
-                        CalculateDamage(0, rnd.Next(1, 6));
+                        CalculateDamage(0, rnd.Next(4, 6) - buffDef);
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
@@ -346,12 +465,12 @@ namespace ArdagbapAdventureGame
                     if (lblCreatureType.Text == "Wizard")
                     {
                         MessageBox.Show("How can steel best magic? " + lblCreatureName.Text + " turns your attack back at you!");
-                        CalculateDamage(0, rnd.Next(1, 6));
+                        CalculateDamage(0, rnd.Next(4, 6) - buffDef);
                     }
                     else if (lblCreatureType.Text == "Rogue")
                     {
                         MessageBox.Show("Theatricality and deception. " + lblCreatureName.Text + " schemes are not match for you as you strike them down!");
-                        CalculateDamage(playerBaseDamage + rnd.Next(1, 11), 0);
+                        CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 11), 0);
                     }
                     else if (lblCreatureType.Text == "Warrior")
                     {
