@@ -16,22 +16,22 @@ namespace ArdagbapAdventureGame
 
         Random rnd = new Random();
 
-        Image img_Room = Image.FromFile("Room.jpg");
-        Image img_Mountains = Image.FromFile("Mountains.jpg");
-        Image img_Rural = Image.FromFile("Rural.jpg");
-        Image img_Lake = Image.FromFile("Laketown.jpg");
-        Image img_Path = Image.FromFile("Pathway.jpg");
-        Image img_Bloons = Image.FromFile("Bloons.jpg");
-        Image img_City = Image.FromFile("CoastCity.jpg");
-        Image img_Beach = Image.FromFile("Beach.jpg");
-        Image img_Sea = Image.FromFile("Sea.jpg");
-        Image img_Cosmic = Image.FromFile("Cosmic.jpg");
+        Image img_Room = Image.FromFile(@"Resources\Room.jpg");
+        Image img_Mountains = Image.FromFile(@"Resources\Mountains.jpg");
+        Image img_Rural = Image.FromFile(@"Resources\Rural.jpg");
+        Image img_Lake = Image.FromFile(@"Resources\Laketown.jpg");
+        Image img_Path = Image.FromFile(@"Resources\Pathway.jpg");
+        Image img_Bloons = Image.FromFile(@"Resources\Bloons.jpg");
+        Image img_City = Image.FromFile(@"Resources\CoastCity.jpg");
+        Image img_Beach = Image.FromFile(@"Resources\Beach.jpg");
+        Image img_Sea = Image.FromFile(@"Resources\Sea.jpg");
+        Image img_Cosmic = Image.FromFile(@"Resources\Cosmic.jpg");
 
-        Image img_Metal = Image.FromFile("D_Metal.png");
-        Image img_Wizard = Image.FromFile("D_Wizard.png");
-        Image img_Fairy = Image.FromFile("D_Fairy.png");
-        Image img_Faun = Image.FromFile("D_Faun.png");
-        Image img_Leonan = Image.FromFile("D_Leonan.png");
+        Image img_Metal = Image.FromFile(@"Resources\D_Metal.png");
+        Image img_Wizard = Image.FromFile(@"Resources\D_Wizard.png");
+        Image img_Fairy = Image.FromFile(@"Resources\D_Fairy.png");
+        Image img_Faun = Image.FromFile(@"Resources\D_Faun.png");
+        Image img_Leonan = Image.FromFile(@"Resources\D_Leonan.png");
 
         public void DisplayEvents()
         {
