@@ -209,52 +209,62 @@
             // 
             // debugStart
             // 
-            this.debugStart.Location = new System.Drawing.Point(170, 388);
+            this.debugStart.Enabled = false;
+            this.debugStart.Location = new System.Drawing.Point(953, 268);
             this.debugStart.Name = "debugStart";
             this.debugStart.Size = new System.Drawing.Size(90, 41);
             this.debugStart.TabIndex = 11;
             this.debugStart.Text = "Debug Start";
             this.debugStart.UseVisualStyleBackColor = true;
+            this.debugStart.Visible = false;
             this.debugStart.Click += new System.EventHandler(this.debugStart_Click);
             // 
             // debugContinue
             // 
-            this.debugContinue.Location = new System.Drawing.Point(170, 435);
+            this.debugContinue.Enabled = false;
+            this.debugContinue.Location = new System.Drawing.Point(953, 311);
             this.debugContinue.Name = "debugContinue";
             this.debugContinue.Size = new System.Drawing.Size(90, 41);
             this.debugContinue.TabIndex = 12;
             this.debugContinue.Text = "Debug Continue";
             this.debugContinue.UseVisualStyleBackColor = true;
+            this.debugContinue.Visible = false;
             this.debugContinue.Click += new System.EventHandler(this.debugContinue_Click);
             // 
             // debugSpell
             // 
-            this.debugSpell.Location = new System.Drawing.Point(138, 493);
+            this.debugSpell.Enabled = false;
+            this.debugSpell.Location = new System.Drawing.Point(905, 268);
             this.debugSpell.Name = "debugSpell";
             this.debugSpell.Size = new System.Drawing.Size(48, 41);
             this.debugSpell.TabIndex = 13;
             this.debugSpell.Text = "Debug Spell";
             this.debugSpell.UseVisualStyleBackColor = true;
+            this.debugSpell.Visible = false;
             this.debugSpell.Click += new System.EventHandler(this.debugSpell_Click);
             // 
             // debugSkill
             // 
-            this.debugSkill.Location = new System.Drawing.Point(192, 493);
+            this.debugSkill.Enabled = false;
+            this.debugSkill.Location = new System.Drawing.Point(913, 312);
             this.debugSkill.Name = "debugSkill";
             this.debugSkill.Size = new System.Drawing.Size(48, 41);
             this.debugSkill.TabIndex = 14;
             this.debugSkill.Text = "Debug Skill";
             this.debugSkill.UseVisualStyleBackColor = true;
+            this.debugSkill.Visible = false;
             this.debugSkill.Click += new System.EventHandler(this.debugSkill_Click);
             // 
             // debugStrength
             // 
-            this.debugStrength.Location = new System.Drawing.Point(246, 493);
+            this.debugStrength.Enabled = false;
+            this.debugStrength.Location = new System.Drawing.Point(820, 311);
             this.debugStrength.Name = "debugStrength";
             this.debugStrength.Size = new System.Drawing.Size(48, 41);
             this.debugStrength.TabIndex = 15;
             this.debugStrength.Text = "Debug Strong";
             this.debugStrength.UseVisualStyleBackColor = true;
+            this.debugStrength.Visible = false;
             this.debugStrength.Click += new System.EventHandler(this.debugStrength_Click);
             // 
             // lblBarPlayer
@@ -300,27 +310,28 @@
             // 
             // btnPopulateCard
             // 
-            this.btnPopulateCard.Location = new System.Drawing.Point(266, 388);
+            this.btnPopulateCard.Location = new System.Drawing.Point(162, 399);
             this.btnPopulateCard.Name = "btnPopulateCard";
-            this.btnPopulateCard.Size = new System.Drawing.Size(55, 41);
+            this.btnPopulateCard.Size = new System.Drawing.Size(128, 117);
             this.btnPopulateCard.TabIndex = 20;
-            this.btnPopulateCard.Text = "Debug Cards";
+            this.btnPopulateCard.Text = "Draw Cards (-5 HP)";
             this.btnPopulateCard.UseVisualStyleBackColor = true;
             this.btnPopulateCard.Click += new System.EventHandler(this.btnPopulateCard_Click);
             // 
             // debugUse
             // 
-            this.debugUse.Location = new System.Drawing.Point(266, 435);
+            this.debugUse.Location = new System.Drawing.Point(862, 312);
             this.debugUse.Name = "debugUse";
             this.debugUse.Size = new System.Drawing.Size(55, 41);
             this.debugUse.TabIndex = 21;
             this.debugUse.Text = "Debug Use";
             this.debugUse.UseVisualStyleBackColor = true;
+            this.debugUse.Visible = false;
             this.debugUse.Click += new System.EventHandler(this.debugUse_Click);
             // 
             // textPlayer
             // 
-            this.textPlayer.Location = new System.Drawing.Point(12, 255);
+            this.textPlayer.Location = new System.Drawing.Point(9, 240);
             this.textPlayer.Name = "textPlayer";
             this.textPlayer.ReadOnly = true;
             this.textPlayer.Size = new System.Drawing.Size(120, 97);

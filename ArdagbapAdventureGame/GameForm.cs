@@ -476,7 +476,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your petty magic.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your spells breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 16), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Skill")//roguecasting!
@@ -497,7 +502,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your coniving schemes.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your skill breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 16), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Strength")//wariorcasting!
@@ -518,7 +528,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " ignores your might.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your strength breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 16), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
             }

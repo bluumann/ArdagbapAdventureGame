@@ -362,5 +362,18 @@ namespace ArdagbapAdventureGame
                 }
             }
         }
+
+        private void btnInstruction_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("1) You will be shown a scene and a text.\n" +
+                "2) After reading, you should pick a card to beat a puzzle or combat.\n" +
+                "3) Combat and puzzles use a rock, papper, scissors mechanic, be creative!\n" +
+                "4) You should always try to investigate or rest during a scene.\n" +
+                "5) If you run out of cards in a scene or don't have the right card for the puzzle, you can draw a new hand by spending some HP.\n" +
+                "6) If you run out of cards in combat or don't have the right card for the enemy, you should use your normal attack.\n" +
+                "7) Multiple adventurers can help on a quest, if you run away you can come back with a different hero!\n" +
+                "8) It's not about winning or losing, it's about how you fight and how you have fun!\n" +
+                "9) Please, have fun!\n", "Instructions");
+        }
     }
 }

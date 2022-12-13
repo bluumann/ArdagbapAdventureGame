@@ -105,12 +105,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
+=======
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Store.cs" />
+>>>>>>> 8abf34c19efcbb1406ea81f36dd69b28cb5b12e6
     <EmbeddedResource Include="CardCC.resx">
       <DependentUpon>CardCC.cs</DependentUpon>
     </EmbeddedResource>

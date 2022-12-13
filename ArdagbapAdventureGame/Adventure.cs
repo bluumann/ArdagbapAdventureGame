@@ -70,7 +70,7 @@ namespace ArdagbapAdventureGame
             Events.Add(new DialogEncounter("Scene 7", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 8", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
 
-            Events.Add(new CreatureCombat("A Cosmic Ending", img_Cosmic, "The End of All Things", ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 250, 15));
+            Events.Add(new CreatureCombat("A Cosmic Ending", img_Cosmic, "The End of All Things", ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 220, 15));
 
         }
 
