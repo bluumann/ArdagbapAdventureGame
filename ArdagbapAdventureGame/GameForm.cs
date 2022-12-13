@@ -48,6 +48,15 @@ namespace ArdagbapAdventureGame
             menu = main;
             InitializeComponent();
             EndCombat(); //clears combat indicators that exist for placeholder on design form.
+            populatePlayerHand();
+
+
+            Adventure.SetPath();
+            lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
+            textEvent.Text = Adventure.Events[Adventure.CurrentPath].EventDescription;
+            picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
+            lblEventType.Text = Adventure.Events[Adventure.CurrentPath].EventType;
+            hasAction = true;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -496,12 +505,20 @@ namespace ArdagbapAdventureGame
         // Populate the card panel section with cards
         private void btnPopulateCard_Click(object sender, EventArgs e)
         {
+            barPlayerHP.Value -= 5;
+            UpdateCombat();
+            populatePlayerHand();
+        }
+
+        // For populating player hand
+        private void populatePlayerHand()
+        {
             //Clear for refresh
             panelCard.Controls.Clear();
 
             //Create a list of possible cards
             possibleCards = new List<Card>() { skillCard, strongCard, spellCard };
-            
+
             //Create our custom controls and add them to a list
             CardCC card1 = new CardCC(this);
             CardCC card2 = new CardCC(this);
@@ -509,8 +526,8 @@ namespace ArdagbapAdventureGame
             CardCC card4 = new CardCC(this);
             CardCC card5 = new CardCC(this);
 
-            cardCCs = new List<CardCC>() { card1, card2, card3, card4, card5};
-            
+            cardCCs = new List<CardCC>() { card1, card2, card3, card4, card5 };
+
             //For placement
             int xAxis = 0;
 

@@ -304,7 +304,7 @@
             this.btnPopulateCard.Name = "btnPopulateCard";
             this.btnPopulateCard.Size = new System.Drawing.Size(55, 41);
             this.btnPopulateCard.TabIndex = 20;
-            this.btnPopulateCard.Text = "Debug Cards";
+            this.btnPopulateCard.Text = "New Hand (-5 HP)";
             this.btnPopulateCard.UseVisualStyleBackColor = true;
             this.btnPopulateCard.Click += new System.EventHandler(this.btnPopulateCard_Click);
             // 
