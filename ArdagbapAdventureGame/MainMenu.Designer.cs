@@ -51,6 +51,7 @@
             this.textBoxProfileName = new System.Windows.Forms.TextBox();
             this.labelProfileGenderText = new System.Windows.Forms.Label();
             this.labelProfileNameText = new System.Windows.Forms.Label();
+            this.btnInstruction = new System.Windows.Forms.Button();
             this.panelCreateProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFemale4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFemale3)).BeginInit();
@@ -349,6 +350,25 @@
             this.labelProfileNameText.TabIndex = 0;
             this.labelProfileNameText.Text = "Name:";
             // 
+            // btnInstruction
+            // 
+            this.btnInstruction.BackColor = System.Drawing.Color.Transparent;
+            this.btnInstruction.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.btnInstruction.FlatAppearance.BorderSize = 2;
+            this.btnInstruction.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btnInstruction.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.btnInstruction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInstruction.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInstruction.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnInstruction.Location = new System.Drawing.Point(66, 23);
+            this.btnInstruction.Margin = new System.Windows.Forms.Padding(6);
+            this.btnInstruction.Name = "btnInstruction";
+            this.btnInstruction.Size = new System.Drawing.Size(115, 42);
+            this.btnInstruction.TabIndex = 6;
+            this.btnInstruction.Text = "Instructions";
+            this.btnInstruction.UseVisualStyleBackColor = false;
+            this.btnInstruction.Click += new System.EventHandler(this.btnInstruction_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -357,6 +377,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.btnInstruction);
             this.Controls.Add(this.panelCreateProfile);
             this.Controls.Add(this.flowLayoutPanelDisplayProfiles);
             this.Controls.Add(this.btnMenuExit);
@@ -406,5 +427,6 @@
         public System.Windows.Forms.PictureBox pictureBoxMale3;
         public System.Windows.Forms.PictureBox pictureBoxMale2;
         public System.Windows.Forms.PictureBox pictureBoxMale1;
+        private System.Windows.Forms.Button btnInstruction;
     }
 }

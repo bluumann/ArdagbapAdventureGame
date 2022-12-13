@@ -24,9 +24,9 @@ namespace ArdagbapAdventureGame
 
         Random rnd = new Random();
 
-        Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("D_Leonan.png") };
-        Card strongCard = new Card() { CardName = "Strength Card", CardType = "Strength", CardDescription = "This is a strong card.", CardImage = Image.FromFile("D_Metal.png") };
-        Card spellCard = new Card() { CardName = "Spell Card", CardType = "Spell", CardDescription = "This is a spell card.", CardImage = Image.FromFile("D_Wizard.png") };
+        Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("SkillCard.png") };
+        Card strongCard = new Card() { CardName = "Strength Card", CardType = "Strength", CardDescription = "This is a strong card.", CardImage = Image.FromFile("StrengthCard.png") };
+        Card spellCard = new Card() { CardName = "Spell Card", CardType = "Spell", CardDescription = "This is a spell card.", CardImage = Image.FromFile("SpellCard.png") };
 
         List<CardCC> cardCCs;
         List<Card> possibleCards;
@@ -476,7 +476,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your petty magic.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your spells breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 16), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Skill")//roguecasting!
@@ -497,7 +502,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your coniving schemes.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your skill breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 16), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Strength")//wariorcasting!
@@ -518,7 +528,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " ignores your might.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your strength breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 16), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
             }
