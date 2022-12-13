@@ -10,8 +10,17 @@ namespace ArdagbapAdventureGame
     internal abstract class Event
     {
         public string EventName;
-        private Image EventImage;
-        private string EventDescription;
-        private string EventType;
+        public Image EventImage;
+        public string EventDescription;
+        public string EventType;
+
+        protected Event(string eventName, Image eventImage, string eventType)
+        {
+            EventName = eventName;
+            EventImage = eventImage;
+            EventType = eventType;
+        }
+
+        public abstract void UpdateEvent();
     }
 }

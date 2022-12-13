@@ -10,7 +10,7 @@ namespace ArdagbapAdventureGame
     public class Game
     {
         private List<Profile> Profiles = new List<Profile>();
-        public Profile CurrentProfile;
+        private Profile CurrentProfile;
 
         //public Profile NewProfile()
         //{
@@ -18,6 +18,15 @@ namespace ArdagbapAdventureGame
         //    //return createdProfile;
         //}
 
+        public Game(Profile profile)
+        {
+            CurrentProfile = profile;
+        }
+
+        public Profile SetCurrentGameProfile()
+        {
+            return CurrentProfile;
+        }
         public void ShowProfiles()
         {
 
@@ -35,7 +44,7 @@ namespace ArdagbapAdventureGame
 
         public void StartNewAdventure()
         {
-
+   
         }
 
         public void ContinueAdventure()
@@ -49,3 +58,18 @@ namespace ArdagbapAdventureGame
 
     }
 }
+
+
+/*
+ Puzzle = MessageBox.Show("The puzzle stands in from of you, what will succeed on it?", "Puzzle", MessageBoxButtons.YesNo);
+            if (Puzzle == DialogResult.Yes)
+            {
+                lbn_Turn.Text = "You succeeded on the puzzle and got a point!";
+                score++;
+                lbn_PointScore.Text = score.ToString(); 
+            }
+            if (Puzzle == DialogResult.No)
+            {
+                lbn_Turn.Text = "You failed on the puzzle and showed you can be humble!";
+            }
+*/
