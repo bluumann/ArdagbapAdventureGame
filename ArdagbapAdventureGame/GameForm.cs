@@ -112,7 +112,7 @@ namespace ArdagbapAdventureGame
             if (Adventure.Events[Adventure.CurrentPath].EventName == "A Cosmic Ending") //the end scene is less random so it's customized here.
             {
                 lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
-                textEvent.Text = "Placeholder Ending Scene Text";
+                textEvent.Text = "As you venture into the cosmic vastness of the Great Destroyer's temple, you realize you are too late to stop your old friend. He really betrayed you and unleashed the destroyer. Now it's up to you to stop it or let it break the world. Good luck.";
                 picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
                 lblEventType.Text = "End Game";
 
@@ -186,7 +186,7 @@ namespace ArdagbapAdventureGame
                 UpdateCombat();
                 populatePlayerHand();
             }
-            else if (lblEventType.Text == "Combat")
+            else if (lblEventType.Text == "Combat" || lblEventType.Text == "End Game")
             {
                 MessageBox.Show("You cannot rest during combat...");
             }
@@ -445,7 +445,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your petty magic.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("Knowing the secrets of the destroyer, your magic is enough to break " + lblCreatureName.Text + " dealing massive damage.");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 11), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Skill")//roguecasting!
@@ -466,7 +471,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your coniving schemes.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("Knowing the secrets of the destroyer, your skill is enough to break " + lblCreatureName.Text + " dealing massive damage.");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 11), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Strength")//wariorcasting!
@@ -487,7 +497,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " ignores your might.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("Knowing the secrets of the destroyer, your strength is enough to break " + lblCreatureName.Text + " dealing massive damage.");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 11), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
             }

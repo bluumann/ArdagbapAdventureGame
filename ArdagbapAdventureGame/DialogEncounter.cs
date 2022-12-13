@@ -13,7 +13,7 @@ namespace ArdagbapAdventureGame
         public DialogEncounter(string eventName, Image eventImage, string eventType, int key) : base(eventName, eventImage, eventType)
         {
             EventDescription = "";
-            if (eventName == "A Dank and Dark Prison") EventDescription = "You wake up on a dank and dark prison, as you look around you realize you've been tricked by your old foe, as he went for the Temple of the Great Destroyer. You can only hope, while he betrayed you, he still wants to prevent the destroyer's release." + " ";
+            if (eventName == "A Dank and Dark Prison") EventDescription = "You wake up on a dank and dark prison, as you look around you realize you've been tricked by your old friend, as he went for the Temple of the Great Destroyer. You can only hope, while he betrayed you, he still wants to prevent the destroyer's release." + " ";
             switch (eventType)
             {
                 case "Spell":
