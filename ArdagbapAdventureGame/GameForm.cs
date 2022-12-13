@@ -13,13 +13,15 @@ namespace ArdagbapAdventureGame
 {
     public partial class GameForm : Form
     {
+        private Profile CurrentProfile; // Contains the current player profile with all its properties
+
         Adventure Adventure = new Adventure();
         bool hasAction = true; //controls wether player rested or investigated scene.
         int currentCreatureMaxHP = 0; //hold the maximum HP of the current creature.
         int currentCreatureBaseDamage = 0;
         int playerBaseDamage = 10;
         int playerMaxHP = 100;
-        
+
         Random rnd = new Random();
 
         Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("D_Leonan.png") };
@@ -50,7 +52,6 @@ namespace ArdagbapAdventureGame
             EndCombat(); //clears combat indicators that exist for placeholder on design form.
             populatePlayerHand();
 
-
             Adventure.SetPath();
             lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
             textEvent.Text = Adventure.Events[Adventure.CurrentPath].EventDescription;
@@ -59,12 +60,36 @@ namespace ArdagbapAdventureGame
             hasAction = true;
         }
 
+        public void SetCurrentProfile(Profile profile)
+        {
+            CurrentProfile = profile;
+        }
+
+        public void UpdatePlayerInfo()
+        {
+            lblPlayerName.Text = CurrentProfile.Name; // Set player name to that of the current player
+            barPlayerHP.Value = CurrentProfile.CurrentHealth; // Set initial value for Player's health bar
+            lblBarPlayer.Text = CurrentProfile.CurrentHealth.ToString() + "/" + CurrentProfile.MaxHealth.ToString(); // Set inital value for player current health / max health
+
+            Image avatarImage = Image.FromFile($@"Resources\{CurrentProfile.AvatarImageName}.png");
+
+            picPlayer.Image = avatarImage;
+        }
+
+        private void GameForm_Load(object sender, EventArgs e)
+        {
+            UpdatePlayerInfo();
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
+            menu.panelCreateProfile.Hide();
+            menu.flowLayoutPanelDisplayProfiles.Show();
+            MainMenu.selectedProfileControl = null;
+            MainMenu.HandleProfileControlSelection();
             menu.Show();
         }
-
         //debug commands begin
         private void debugStart_Click(object sender, EventArgs e)
         {
@@ -165,15 +190,15 @@ namespace ArdagbapAdventureGame
             if (barCreatureHP.Value == 0) MessageBox.Show("Nothing to Attack!");
             else
             {
-                int playerDmg = playerBaseDamage + buffBaseDamage + rnd.Next(1,5);
-                int creatureDmg = currentCreatureBaseDamage - buffDef + rnd.Next(1,5);
+                int playerDmg = playerBaseDamage + buffBaseDamage + rnd.Next(1, 5);
+                int creatureDmg = currentCreatureBaseDamage - buffDef + rnd.Next(1, 5);
 
                 MessageBox.Show("You attacked " + lblCreatureName.Text + " for " + playerDmg + " and were attacked for " + creatureDmg + ".");
 
                 CalculateDamage(playerDmg, creatureDmg);
 
             }
-          
+
         }
         private void btnRest_Click(object sender, EventArgs e)
         {
@@ -285,7 +310,7 @@ namespace ArdagbapAdventureGame
                             MessageBox.Show("As you approach to take some loot the elderly man strikes your hand. " +
                             "'Bad idea my friend!' " +
                             "You are chased away and take 5 points of damage.", "Result", MessageBoxButtons.OK);
-                            
+
                             if (barPlayerHP.Value - 5 <= 0) barPlayerHP.Value = 0;
                             else barPlayerHP.Value -= 5;
                             UpdateCombat();
@@ -367,7 +392,7 @@ namespace ArdagbapAdventureGame
 
                 message = list[rnd.Next(list.Count)];
             }
-            
+
             return message;
         }
 
@@ -441,7 +466,7 @@ namespace ArdagbapAdventureGame
                     else if (lblCreatureType.Text == "Warrior")
                     {
                         MessageBox.Show("You cast a spell at " + lblCreatureName.Text + ". The spell breaks the warrior's defense and deals heavy damage.");
-                        CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1,11), 0);
+                        CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(1, 11), 0);
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
@@ -569,8 +594,8 @@ namespace ArdagbapAdventureGame
 
         private void debugUse_Click(object sender, EventArgs e)
         {
-            
-        }
 
+        }
     }
 }
+
