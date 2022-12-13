@@ -202,7 +202,7 @@ namespace ArdagbapAdventureGame
         }
         private void btnRest_Click(object sender, EventArgs e)
         {
-            if (hasAction && lblEventType.Text != "Combat")
+            if (hasAction && (lblEventType.Text != "Combat" || lblEventType.Text == "End Game"))
             {
                 if (barPlayerHP.Value + 15 + buffRest >= 100 + buffHP) barPlayerHP.Value = 100 + buffHP;
                 else barPlayerHP.Value += 15 + buffRest;
@@ -220,6 +220,12 @@ namespace ArdagbapAdventureGame
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            if (lblEventType.Text == "Combat" || lblEventType.Text == "End Game")
+            {
+                MessageBox.Show("You must fight!", "Card Draw", MessageBoxButtons.OK);
+                return;
+            }
+
             string investigateHP = "You come across an elderly lady and are offered a warm bowl of soup. Do you accept?";
             string investigateRest = "You find a bush filled with tasty looking berries, stop and pick some?";
             string investigateDMG = "You come across a pile of unattended weapons, take one?";
@@ -250,8 +256,8 @@ namespace ArdagbapAdventureGame
                             playerMaxHP += buffHP;
                             barPlayerHP.Maximum = playerMaxHP;
                             barPlayerHP.Value += buffHP;
-                            MessageBox.Show("The soup is delicious! You feel yourself gaining stamina.", "Result", MessageBoxButtons.OK);
                             UpdateCombat();
+                            MessageBox.Show("The soup is delicious! You feel yourself gaining stamina.", "Result", MessageBoxButtons.OK);
                         }
                         else MessageBox.Show("You decide not to take any soup, after all, you have no idea who this lady is.", "Result", MessageBoxButtons.OK);
                         buffCheck = false;
@@ -530,6 +536,11 @@ namespace ArdagbapAdventureGame
         // Populate the card panel section with cards
         private void btnPopulateCard_Click(object sender, EventArgs e)
         {
+            if (lblEventType.Text == "Combat" || lblEventType.Text == "End Game")
+            {
+                MessageBox.Show("You cannot get new cards while in combat...", "Card Draw", MessageBoxButtons.OK);
+                return;
+            }
             barPlayerHP.Value -= 5;
             UpdateCombat();
             populatePlayerHand();
