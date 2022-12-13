@@ -11,7 +11,7 @@ namespace ArdagbapAdventureGame
     {
         public string CardName { get; set; }
         public string CardType { get; set; }
-        public Image CardImage { get; set; }
+        public Image  CardImage { get; set; }
         public string CardDescription { get; set; }
         public bool IsTemporary { get; set; }
         public string CardEffect { get; set; }

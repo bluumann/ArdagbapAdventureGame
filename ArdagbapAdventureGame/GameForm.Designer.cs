@@ -165,7 +165,7 @@
             this.barPlayerHP.Name = "barPlayerHP";
             this.barPlayerHP.Size = new System.Drawing.Size(100, 23);
             this.barPlayerHP.TabIndex = 6;
-            this.barPlayerHP.Value = 10;
+            this.barPlayerHP.Value = 100;
             // 
             // btnAttack
             // 
@@ -260,7 +260,7 @@
             // lblBarPlayer
             // 
             this.lblBarPlayer.AutoSize = true;
-            this.lblBarPlayer.Location = new System.Drawing.Point(44, 195);
+            this.lblBarPlayer.Location = new System.Drawing.Point(18, 195);
             this.lblBarPlayer.Name = "lblBarPlayer";
             this.lblBarPlayer.Size = new System.Drawing.Size(48, 13);
             this.lblBarPlayer.TabIndex = 16;
@@ -304,7 +304,7 @@
             this.btnPopulateCard.Name = "btnPopulateCard";
             this.btnPopulateCard.Size = new System.Drawing.Size(55, 41);
             this.btnPopulateCard.TabIndex = 20;
-            this.btnPopulateCard.Text = "Debug Cards";
+            this.btnPopulateCard.Text = "New Hand (-5 HP)";
             this.btnPopulateCard.UseVisualStyleBackColor = true;
             this.btnPopulateCard.Click += new System.EventHandler(this.btnPopulateCard_Click);
             // 
@@ -320,10 +320,10 @@
             // 
             // textPlayer
             // 
-            this.textPlayer.Location = new System.Drawing.Point(12, 255);
+            this.textPlayer.Location = new System.Drawing.Point(12, 211);
             this.textPlayer.Name = "textPlayer";
             this.textPlayer.ReadOnly = true;
-            this.textPlayer.Size = new System.Drawing.Size(120, 97);
+            this.textPlayer.Size = new System.Drawing.Size(120, 132);
             this.textPlayer.TabIndex = 17;
             this.textPlayer.Text = "";
             // 
@@ -359,7 +359,6 @@
             this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Game";
-            this.Load += new System.EventHandler(this.GameForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picPlayer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCreature)).EndInit();
             this.panelEvent.ResumeLayout(false);
@@ -402,3 +401,4 @@
         private System.Windows.Forms.RichTextBox textPlayer;
     }
 }
+

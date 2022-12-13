@@ -10,7 +10,7 @@ namespace ArdagbapAdventureGame
     internal class Adventure
     {
         public int CurrentPath = 0;
-
+        
         public List<Event> Events = new List<Event>();
         public List<string> Names = new List<string>();
 
@@ -35,7 +35,7 @@ namespace ArdagbapAdventureGame
 
         public void DisplayEvents()
         {
-            if (CurrentPath == Events.Count - 1);
+            if (CurrentPath == Events.Count - 1) ;
             else CurrentPath++;
         }
         public void SetPath()
@@ -57,7 +57,7 @@ namespace ArdagbapAdventureGame
             Names.Add("Final Project");
 
             Events.Add(new DialogEncounter("A Dank and Dark Prison", img_Room, GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
-
+            
             Events.Add(new DialogEncounter("Scene 1", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new CreatureCombat("Combat 1", GenerateImage(ReceiveRandom(8)), GenerateClass(ReceiveRandom(3)), ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 50, 5));
             Events.Add(new DialogEncounter("Scene 2", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));

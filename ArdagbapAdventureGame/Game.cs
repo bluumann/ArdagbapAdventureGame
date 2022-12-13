@@ -10,7 +10,7 @@ namespace ArdagbapAdventureGame
     public class Game
     {
         private List<Profile> Profiles = new List<Profile>();
-        private Profile CurrentProfile;
+        public Profile CurrentProfile;
 
         //public Profile NewProfile()
         //{
@@ -18,15 +18,6 @@ namespace ArdagbapAdventureGame
         //    //return createdProfile;
         //}
 
-        public Game(Profile profile)
-        {
-            CurrentProfile = profile;
-        }
-
-        public Profile SetCurrentGameProfile()
-        {
-            return CurrentProfile;
-        }
         public void ShowProfiles()
         {
 
@@ -44,7 +35,7 @@ namespace ArdagbapAdventureGame
 
         public void StartNewAdventure()
         {
-   
+
         }
 
         public void ContinueAdventure()
