@@ -24,9 +24,15 @@ namespace ArdagbapAdventureGame
 
         Random rnd = new Random();
 
+<<<<<<< HEAD
         Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile("SkillCard.png") };
         Card strongCard = new Card() { CardName = "Strength Card", CardType = "Strength", CardDescription = "This is a strong card.", CardImage = Image.FromFile("StrengthCard.png") };
         Card spellCard = new Card() { CardName = "Spell Card", CardType = "Spell", CardDescription = "This is a spell card.", CardImage = Image.FromFile("SpellCard.png") };
+=======
+        Card skillCard = new Card() { CardName = "Skill Card", CardType = "Skill", CardDescription = "This is a skill card.", CardImage = Image.FromFile(@"Resources\D_Leonan.png") };
+        Card strongCard = new Card() { CardName = "Strength Card", CardType = "Strength", CardDescription = "This is a strong card.", CardImage = Image.FromFile(@"Resources\D_Metal.png") };
+        Card spellCard = new Card() { CardName = "Spell Card", CardType = "Spell", CardDescription = "This is a spell card.", CardImage = Image.FromFile(@"Resources\D_Wizard.png") };
+>>>>>>> 8abf34c19efcbb1406ea81f36dd69b28cb5b12e6
 
         List<CardCC> cardCCs;
         List<Card> possibleCards;
