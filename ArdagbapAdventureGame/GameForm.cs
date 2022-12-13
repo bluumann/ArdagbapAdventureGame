@@ -165,8 +165,8 @@ namespace ArdagbapAdventureGame
             if (barCreatureHP.Value == 0) MessageBox.Show("Nothing to Attack!");
             else
             {
-                int playerDmg = playerBaseDamage + rnd.Next(1,5);
-                int creatureDmg = currentCreatureBaseDamage + rnd.Next(1,5);
+                int playerDmg = playerBaseDamage + buffBaseDamage + rnd.Next(1,5);
+                int creatureDmg = currentCreatureBaseDamage - buffDef + rnd.Next(1,5);
 
                 MessageBox.Show("You attacked " + lblCreatureName.Text + " for " + playerDmg + " and were attacked for " + creatureDmg + ".");
 
@@ -181,16 +181,16 @@ namespace ArdagbapAdventureGame
             {
                 if (barPlayerHP.Value + 15 + buffRest >= 100 + buffHP) barPlayerHP.Value = 100 + buffHP;
                 else barPlayerHP.Value += 15 + buffRest;
-                MessageBox.Show("You rest and recover " + (15 + buffHP) + "HP.");
+                MessageBox.Show("You rest and recover " + (15 + buffRest) + "HP.");
                 hasAction = false;
                 UpdateCombat();
+                populatePlayerHand();
             }
             else if (lblEventType.Text == "Combat")
             {
                 MessageBox.Show("You cannot rest during combat...");
             }
             else MessageBox.Show("You've already rested or investigated this area.");
-            
         }
 
         private void btnRun_Click(object sender, EventArgs e)
@@ -513,6 +513,11 @@ namespace ArdagbapAdventureGame
         // For populating player hand
         private void populatePlayerHand()
         {
+            if (lblEventType.Text == "Combat")
+            {
+                MessageBox.Show("Cannot get new hand while in combat...", "Rest", MessageBoxButtons.OK);
+            }
+
             //Clear for refresh
             panelCard.Controls.Clear();
 
