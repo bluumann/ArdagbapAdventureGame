@@ -32,6 +32,8 @@ namespace ArdagbapAdventureGame
         Image img_Fairy = Image.FromFile(@"Resources\D_Fairy.png");
         Image img_Faun = Image.FromFile(@"Resources\D_Faun.png");
         Image img_Leonan = Image.FromFile(@"Resources\D_Leonan.png");
+        Image img_TGD = Image.FromFile(@"Resources\Great_Destroyer.png");
+
 
         public void DisplayEvents()
         {
@@ -70,7 +72,7 @@ namespace ArdagbapAdventureGame
             Events.Add(new DialogEncounter("Scene 7", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
             Events.Add(new DialogEncounter("Scene 8", GenerateImage(ReceiveRandom(8)), GeneratePuzzle(ReceiveRandom(3)), ReceiveRandom(5)));
 
-            Events.Add(new CreatureCombat("A Cosmic Ending", img_Cosmic, "The End of All Things", ReceiveRandom(5), GenerateEnemy(ReceiveRandom(5)), 250, 15));
+            Events.Add(new CreatureCombat("A Cosmic Ending", img_Cosmic, "The End of All Things", ReceiveRandom(5), img_TGD, 200, 15));
 
         }
 

@@ -137,7 +137,7 @@ namespace ArdagbapAdventureGame
             if (Adventure.Events[Adventure.CurrentPath].EventName == "A Cosmic Ending") //the end scene is less random so it's customized here.
             {
                 lblEventName.Text = Adventure.Events[Adventure.CurrentPath].EventName;
-                textEvent.Text = "Placeholder Ending Scene Text";
+                textEvent.Text = "You arrive at the temple of the destroyer. Your old friend betrayed you and released the creature. It is now up to you to stop it before it destroys the world.";
                 picEvent.Image = Adventure.Events[Adventure.CurrentPath].EventImage;
                 lblEventType.Text = "End Game";
 
@@ -202,7 +202,7 @@ namespace ArdagbapAdventureGame
         }
         private void btnRest_Click(object sender, EventArgs e)
         {
-            if (hasAction && (lblEventType.Text != "Combat" || lblEventType.Text == "End Game"))
+            if (hasAction && (lblEventType.Text != "Combat" || lblEventType.Text != "End Game"))
             {
                 if (barPlayerHP.Value + 15 + buffRest >= 100 + buffHP) barPlayerHP.Value = 100 + buffHP;
                 else barPlayerHP.Value += 15 + buffRest;
@@ -402,6 +402,9 @@ namespace ArdagbapAdventureGame
             return message;
         }
 
+
+
+
         public void UseCard(string type, CardCC clickedCard)
         {
             if (lblEventType.Text == "Spell")
@@ -476,7 +479,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your petty magic.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your spells breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(11, 26), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Skill")//roguecasting!
@@ -497,7 +505,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " is immune to your coniving schemes.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your skill breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(11, 26), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
                 else if (type == "Strength")//wariorcasting!
@@ -518,7 +531,12 @@ namespace ArdagbapAdventureGame
                     }
                     else if (lblCreatureType.Text == "The End of All Things")
                     {
-                        MessageBox.Show(lblCreatureName.Text + " ignores your might.");
+                        if (hasBossBuff)
+                        {
+                            MessageBox.Show("After discovering the secrets of the void, your strength breaks " + lblCreatureName.Text + ".");
+                            CalculateDamage(playerBaseDamage + buffBaseDamage + rnd.Next(11, 26), 0);
+                        }
+                        else MessageBox.Show(lblCreatureName.Text + " ignores your might.");
                     }
                 }
             }
@@ -549,7 +567,7 @@ namespace ArdagbapAdventureGame
         // For populating player hand
         private void populatePlayerHand()
         {
-            if (lblEventType.Text == "Combat")
+            if (lblEventType.Text == "Combat" || lblEventType.Text == "End Game")
             {
                 MessageBox.Show("Cannot get new hand while in combat...", "Rest", MessageBoxButtons.OK);
             }

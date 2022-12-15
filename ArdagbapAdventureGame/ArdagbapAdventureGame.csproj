@@ -110,7 +110,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Store.cs" />
     <EmbeddedResource Include="CardCC.resx">
       <DependentUpon>CardCC.cs</DependentUpon>
     </EmbeddedResource>

@@ -51,6 +51,7 @@
             this.textBoxProfileName = new System.Windows.Forms.TextBox();
             this.labelProfileGenderText = new System.Windows.Forms.Label();
             this.labelProfileNameText = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelCreateProfile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFemale4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFemale3)).BeginInit();
@@ -349,6 +350,25 @@
             this.labelProfileNameText.TabIndex = 0;
             this.labelProfileNameText.Text = "Name:";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DimGray;
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DimGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Location = new System.Drawing.Point(56, 23);
+            this.button1.Margin = new System.Windows.Forms.Padding(6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(170, 42);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Instructions";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -357,6 +377,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1084, 561);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.panelCreateProfile);
             this.Controls.Add(this.flowLayoutPanelDisplayProfiles);
             this.Controls.Add(this.btnMenuExit);
@@ -406,5 +427,6 @@
         public System.Windows.Forms.PictureBox pictureBoxMale3;
         public System.Windows.Forms.PictureBox pictureBoxMale2;
         public System.Windows.Forms.PictureBox pictureBoxMale1;
+        private System.Windows.Forms.Button button1;
     }
 }

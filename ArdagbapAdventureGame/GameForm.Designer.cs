@@ -209,17 +209,18 @@
             // 
             // debugStart
             // 
-            this.debugStart.Location = new System.Drawing.Point(170, 388);
+            this.debugStart.Location = new System.Drawing.Point(968, 255);
             this.debugStart.Name = "debugStart";
             this.debugStart.Size = new System.Drawing.Size(90, 41);
             this.debugStart.TabIndex = 11;
             this.debugStart.Text = "Debug Start";
             this.debugStart.UseVisualStyleBackColor = true;
+            this.debugStart.Visible = false;
             this.debugStart.Click += new System.EventHandler(this.debugStart_Click);
             // 
             // debugContinue
             // 
-            this.debugContinue.Location = new System.Drawing.Point(170, 435);
+            this.debugContinue.Location = new System.Drawing.Point(982, 305);
             this.debugContinue.Name = "debugContinue";
             this.debugContinue.Size = new System.Drawing.Size(90, 41);
             this.debugContinue.TabIndex = 12;
@@ -229,32 +230,35 @@
             // 
             // debugSpell
             // 
-            this.debugSpell.Location = new System.Drawing.Point(138, 493);
+            this.debugSpell.Location = new System.Drawing.Point(840, 312);
             this.debugSpell.Name = "debugSpell";
             this.debugSpell.Size = new System.Drawing.Size(48, 41);
             this.debugSpell.TabIndex = 13;
             this.debugSpell.Text = "Debug Spell";
             this.debugSpell.UseVisualStyleBackColor = true;
+            this.debugSpell.Visible = false;
             this.debugSpell.Click += new System.EventHandler(this.debugSpell_Click);
             // 
             // debugSkill
             // 
-            this.debugSkill.Location = new System.Drawing.Point(192, 493);
+            this.debugSkill.Location = new System.Drawing.Point(894, 312);
             this.debugSkill.Name = "debugSkill";
             this.debugSkill.Size = new System.Drawing.Size(48, 41);
             this.debugSkill.TabIndex = 14;
             this.debugSkill.Text = "Debug Skill";
             this.debugSkill.UseVisualStyleBackColor = true;
+            this.debugSkill.Visible = false;
             this.debugSkill.Click += new System.EventHandler(this.debugSkill_Click);
             // 
             // debugStrength
             // 
-            this.debugStrength.Location = new System.Drawing.Point(246, 493);
+            this.debugStrength.Location = new System.Drawing.Point(948, 312);
             this.debugStrength.Name = "debugStrength";
             this.debugStrength.Size = new System.Drawing.Size(48, 41);
             this.debugStrength.TabIndex = 15;
             this.debugStrength.Text = "Debug Strong";
             this.debugStrength.UseVisualStyleBackColor = true;
+            this.debugStrength.Visible = false;
             this.debugStrength.Click += new System.EventHandler(this.debugStrength_Click);
             // 
             // lblBarPlayer
@@ -300,22 +304,23 @@
             // 
             // btnPopulateCard
             // 
-            this.btnPopulateCard.Location = new System.Drawing.Point(266, 388);
+            this.btnPopulateCard.Location = new System.Drawing.Point(160, 378);
             this.btnPopulateCard.Name = "btnPopulateCard";
-            this.btnPopulateCard.Size = new System.Drawing.Size(55, 41);
+            this.btnPopulateCard.Size = new System.Drawing.Size(131, 148);
             this.btnPopulateCard.TabIndex = 20;
-            this.btnPopulateCard.Text = "Debug Cards";
+            this.btnPopulateCard.Text = "Draw New Hand (-5 HP)";
             this.btnPopulateCard.UseVisualStyleBackColor = true;
             this.btnPopulateCard.Click += new System.EventHandler(this.btnPopulateCard_Click);
             // 
             // debugUse
             // 
-            this.debugUse.Location = new System.Drawing.Point(266, 435);
+            this.debugUse.Location = new System.Drawing.Point(905, 265);
             this.debugUse.Name = "debugUse";
             this.debugUse.Size = new System.Drawing.Size(55, 41);
             this.debugUse.TabIndex = 21;
             this.debugUse.Text = "Debug Use";
             this.debugUse.UseVisualStyleBackColor = true;
+            this.debugUse.Visible = false;
             this.debugUse.Click += new System.EventHandler(this.debugUse_Click);
             // 
             // textPlayer
@@ -336,13 +341,13 @@
             this.Controls.Add(this.debugUse);
             this.Controls.Add(this.btnPopulateCard);
             this.Controls.Add(this.lblCreatureType);
+            this.Controls.Add(this.debugContinue);
             this.Controls.Add(this.lblCreatureDmg);
             this.Controls.Add(this.lblBarCreature);
             this.Controls.Add(this.lblBarPlayer);
             this.Controls.Add(this.debugStrength);
             this.Controls.Add(this.debugSkill);
             this.Controls.Add(this.debugSpell);
-            this.Controls.Add(this.debugContinue);
             this.Controls.Add(this.debugStart);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnRun);
